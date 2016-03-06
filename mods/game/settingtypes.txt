@@ -1,0 +1,8 @@
+[Advanced]
+#   This setting is only avaible in Minetest TNG
+#   
+#   If enabled you can use short aliases for example in /giveme:
+#   "/giveme wooden_helmet" not "/giveme armor:wood_head" (but you can further use the old type)
+#   
+#   If disabled the aliases will be "tng:wooden_helmet".
+short_aliases (Short aliases) bool true

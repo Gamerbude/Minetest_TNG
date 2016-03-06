@@ -1,5 +1,9 @@
+local short_aliases = core.setting_getbool("short_aliases") or true
+
 game = {}
-game.name = "next"
+game.description = "Minetest TNG"
+game.name = "minetest_tng"
+game.shortname = "tng"
 game.aliases = {
 	-- armor
 	{"wooden_helmet",		"armor:wood_head"},
@@ -42,14 +46,21 @@ game.aliases = {
 	{"sheep_spawner",		"creatures:sheep_spawner"},
 	{"sheep_spawnegg",		"creatures:sheep_spawnegg"},
 	{"chicken_spawnegg",		"creatures:chicken_spawnegg"},
+	-- default
+	{"bookshelf",			"default:bookshelf"},
+	{"brick",			"default:brick"},
+	{"stonebrick",			"default:stonebrick"},
+	{"desert_stonebrick",		"default:desert_stonebrick"},
+	{"sandstonebrick",		"default:sandstonebrick"},
+	{"obsidianbrick",		"default:obsidianbrick"},
 }
 
 for _, row in ipairs(game.aliases) do
 	local alias = row[1]
 	local itemstring = row[2]
 	
-	if core.setting_getbool("no_short_aliases") == true then
-		alias = gamename .. ":" .. alias
+	if short_aliases == false then
+		alias = game.shortname .. ":" .. alias
 	end
 	
 	-- register alias
