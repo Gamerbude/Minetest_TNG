@@ -25,9 +25,14 @@ License of media (textures, sounds, meshes):
 --------------------------------------------
 (by Authors)
 
-JBB (CC BY-SA 3.0):
+JBB (CC BY-SA 4.0):
   default_itemframe.png
+  default_bonemeal.png
+JBB (CC BY-SA 3.0):
   default_jungleleaves.png, based on texture of BlockMen (CC BY-SA 3.0)
+
+LNJ (CC BY-SA 4.0):
+  default_bone.png
 
 Cisoun (WTFPL):
   default_lava.png
@@ -153,6 +158,9 @@ BlockMen (CC BY-SA 3.0):
   default_stick.png
   default_tool_*.png
   default_wood.png
+  default_workbench_front.png
+  default_workbench_side.png
+  default_workbench_top.png
 
 sofar (CC BY-SA 3.0):
   default_birch_sapling.png

@@ -1,61 +1,62 @@
-local modpath = minetest.get_modpath("default") .. "/nodes/"
+local nodepath = minetest.get_modpath("default") .. "/nodes/"
 
-dofile(modpath .. "sounds.lua")
+dofile(nodepath .. "sounds.lua")
 
 -- full/natural/mapgen
-dofile(modpath .. "ores.lua")
-dofile(modpath .. "leaves.lua")
-dofile(modpath .. "logs.lua")
+dofile(nodepath .. "ores.lua")
+dofile(nodepath .. "leaves.lua")
+dofile(nodepath .. "logs.lua")
 
-dofile(modpath .. "dirt.lua")
-dofile(modpath .. "sand.lua")
-dofile(modpath .. "gravel.lua")
-dofile(modpath .. "stone.lua")
-dofile(modpath .. "cobble.lua")
+dofile(nodepath .. "dirt.lua")
+dofile(nodepath .. "sand.lua")
+dofile(nodepath .. "gravel.lua")
+dofile(nodepath .. "stone.lua")
+dofile(nodepath .. "cobble.lua")
 
-dofile(modpath .. "ice.lua")
-dofile(modpath .. "snow.lua")
+dofile(nodepath .. "ice.lua")
+dofile(nodepath .. "snow.lua")
 
 
 -- Plants
-dofile(modpath .. "grass.lua")
-dofile(modpath .. "papyrus.lua")
-dofile(modpath .. "saplings.lua")
+dofile(nodepath .. "grass.lua")
+dofile(nodepath .. "papyrus.lua")
+dofile(nodepath .. "saplings.lua")
 
-dofile(modpath .. "cactus.lua")
+dofile(nodepath .. "cactus.lua")
 
 
 -- liquids
-dofile(modpath .. "water.lua")
-dofile(modpath .. "lava.lua")
+dofile(nodepath .. "water.lua")
+dofile(nodepath .. "lava.lua")
 
 
 -- crafted
-dofile(modpath .. "glass.lua")
-dofile(modpath .. "planks.lua")
+dofile(nodepath .. "glass.lua")
+dofile(nodepath .. "planks.lua")
 
-dofile(modpath .. "bricks.lua")
+dofile(nodepath .. "bricks.lua")
 
 
 -- light
-dofile(modpath .. "torch.lua")
-dofile(modpath .. "lamps.lua")
+dofile(nodepath .. "torch.lua")
+dofile(nodepath .. "lamps.lua")
 
 -- blocks with an inventory
-dofile(modpath .. "chests.lua")
-dofile(modpath .. "furnace.lua")
-dofile(modpath .. "bookshelf.lua")
+dofile(nodepath .. "chests.lua")
+dofile(nodepath .. "furnace.lua")
+dofile(nodepath .. "bookshelf.lua")
+dofile(nodepath .. "workbench.lua")
 
 -- nodes with special functions
-dofile(modpath .. "signs.lua")
-dofile(modpath .. "fences.lua")
-dofile(modpath .. "latter.lua")
-dofile(modpath .. "rails.lua")
-dofile(modpath .. "itemframes.lua")
-dofile(modpath .. "tables.lua")
+dofile(nodepath .. "signs.lua")
+dofile(nodepath .. "fences.lua")
+dofile(nodepath .. "latter.lua")
+dofile(nodepath .. "rails.lua")
+dofile(nodepath .. "itemframes.lua")
+dofile(nodepath .. "tables.lua")
 
 -- special
-dofile(modpath .. "food.lua")
-dofile(modpath .. "nyancat.lua")
+dofile(nodepath .. "food.lua")
+dofile(nodepath .. "nyancat.lua")
 
-dofile(modpath .. "unused.lua")
+dofile(nodepath .. "unused.lua")
