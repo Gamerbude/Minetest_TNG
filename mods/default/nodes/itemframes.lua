@@ -105,11 +105,19 @@ minetest.register_node("default:itemframe",{
 	sounds = default.node_sound_defaults(),
 	on_rightclick = function(pos, node, clicker, itemstack)
 		if not itemstack then return end
+		
 		local meta = minetest.get_meta(pos)
-			drop_item(pos,node)
-			local s = itemstack:take_item()
-			meta:set_string("item",s:to_string())
-			update_item(pos,node)
+		drop_item(pos,node)
+		
+		local name = itemstack
+		meta:set_string("item", name:to_string())
+		
+		update_item(pos,node)
+		
+		if not core.setting_getbool("creative_mode") then
+			itemstack:take_item()
+		end
+		
 		return itemstack
 	end,
 	on_punch = function(pos, node)
