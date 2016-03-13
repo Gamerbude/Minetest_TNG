@@ -581,7 +581,7 @@ minetest.register_decoration({
 		octaves = 3,
 		persist = 0.66
 	},
-	biomes = {"deciduous_forest"},
+	biomes = {"sandstone_grassland"},
 	y_min = 1,
 	y_max = 31000,
 	schematic = minetest.get_modpath("default").."/schematics/birch_tree.mts",
