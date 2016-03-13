@@ -722,3 +722,10 @@ minetest.register_craft({
 		{"default:stick", "default:stick", "default:stick"},
 	}
 })
+
+minetest.register_craft({
+	output = "default:bonemeal 4",
+	recipe = {
+		{"default:bone"}
+	}
+})

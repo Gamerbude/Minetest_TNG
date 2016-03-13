@@ -1,5 +1,6 @@
 --= Zombie for Creatures MOB-Engine (cme) =--
 -- Copyright (c) 2015-2016 BlockMen <blockmen2015@gmail.com>
+-- Copyright (c) 2016 LNJ <lnj@gmx.de>
 --
 -- init.lua
 --
@@ -108,6 +109,8 @@ local def = {
 
   drops = {
     {"creatures:rotten_flesh", {min = 1, max = 2}, chance = 0.7},
+    {"default:bone", {min = 0, max = 1}, chance = 0.05},
+    {"default:coal_lump", {min = 0, max = 3}, chance = 0.017},
   }
 }
 

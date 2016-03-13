@@ -1,8 +1,9 @@
-local modpath = minetest.get_modpath("default")
+local itempath = minetest.get_modpath("default") .. "/items/"
 
-dofile(modpath .. "/items/tools.lua")
-dofile(modpath .. "/items/weapons.lua")
+dofile(itempath .. "tools.lua")
+dofile(itempath .. "weapons.lua")
 
-dofile(modpath .. "/items/books.lua")
-dofile(modpath .. "/items/materials.lua")
-dofile(modpath .. "/items/misc.lua")
+dofile(itempath .. "books.lua")
+dofile(itempath .. "materials.lua")
+dofile(itempath .. "misc.lua")
+dofile(itempath .. "bonemeal.lua")
