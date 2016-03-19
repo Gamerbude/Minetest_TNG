@@ -8,7 +8,7 @@ This mod is in heavy development. It may contain bugs.
 
 License of source code:
 -----------------------
-Copyright (C) 2016 LNJ <lnj@gmx.de>
+Copyright (C) 2016 LNJ <lnj.git@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -28,13 +28,14 @@ License of media (textures, sounds, meshes):
 --------------------------------------------
 (by Authors)
 
-LNJ (CC BY-SA 3.0):
+LNJ (CC BY-SA 4.0):
   plants_vine.png
+  plants_pear.png
 
 MatrexsVigil [#1]:
-  plants_pear.png
   plants_pear_1.png
   plants_pear_2.png
+  plants_pear_3.png
   plants_pear_sapling.png
 
 [#1]:

@@ -658,6 +658,14 @@ core.register_craft({
 	}
 })
 
+core.register_craft({
+	output = "default:workbench",
+	recipe = {
+		{"group:wood", "group:wood"},
+		{"group:wood", "group:wood"}
+	}
+})
+
 --
 -- Crafting (tool repair)
 --

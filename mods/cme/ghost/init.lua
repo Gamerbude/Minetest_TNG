@@ -1,5 +1,6 @@
 --= Ghost for Creatures MOB-Engine (cme) =--
 -- Copyright (c) 2015-2016 BlockMen <blockmen2015@gmail.com>
+-- Copyright (c) 2016 LNJ <lnj@gmx.de>
 --
 -- init.lua
 --
@@ -101,9 +102,9 @@ local def = {
     }
   },
 
-  --drops = {
-  --  {"creatures:rotten_flesh", {min = 1, max = 2}, chance = 0.7},
-  --},
+  drops = {
+    {"tnt:gunpowder", {min = 0, max = 2}, chance = 0.125}
+  },
 
 }
 
