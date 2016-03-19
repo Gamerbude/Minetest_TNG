@@ -45,6 +45,7 @@ dofile(nodepath .. "lamps.lua")
 dofile(nodepath .. "chests.lua")
 dofile(nodepath .. "furnace.lua")
 dofile(nodepath .. "bookshelf.lua")
+dofile(nodepath .. "workbench.lua")
 
 -- nodes with special functions
 dofile(nodepath .. "signs.lua")

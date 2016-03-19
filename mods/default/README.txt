@@ -158,6 +158,9 @@ BlockMen (CC BY-SA 3.0):
   default_stick.png
   default_tool_*.png
   default_wood.png
+  default_workbench_front.png
+  default_workbench_side.png
+  default_workbench_top.png
 
 sofar (CC BY-SA 3.0):
   default_birch_sapling.png
