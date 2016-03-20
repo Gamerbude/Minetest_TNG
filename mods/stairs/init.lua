@@ -413,3 +413,11 @@ stairs.register_stair_and_slab("straw", "farming:straw",
 	"Straw Stair",
 	"Straw Slab",
 	default.node_sound_leaves_defaults())
+
+stairs.register_stair_and_slab("papyrus", "default:papyrus_block",
+	{choppy = 3, oddly_breakable_by_hand = 2, flammable = 2},
+	{"default_papyrus_block_top.png", "default_papyrus_block_top.png", "default_papyrus_block.png"},
+	"Papyrus Stair",
+	"Papyrus Slab",
+	default.node_sound_leaves_defaults()
+)
