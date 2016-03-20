@@ -28,6 +28,8 @@ License of media (textures, sounds, meshes):
 JBB (CC BY-SA 4.0):
   default_itemframe.png
   default_bonemeal.png
+  default_papyrus_block.png
+  default_papyrus_block_top.png
 JBB (CC BY-SA 3.0):
   default_jungleleaves.png, based on texture of BlockMen (CC BY-SA 3.0)
 
