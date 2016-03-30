@@ -36,7 +36,7 @@ local function add_simple_flower(name, desc, box, f_groups)
 	f_groups.flora = 1
 	f_groups.attached_node = 1
 
-	minetest.register_node("flowers:" .. name, {
+	default.register_node("flowers:" .. name, {
 		description = desc,
 		drawtype = "plantlike",
 		waving = 1,
@@ -134,7 +134,7 @@ for k, v in pairs(mushrooms) do
 	local name, eat_value = v[1], v[2]
 
 
-	minetest.register_node("flowers:mushroom_" .. name, {
+	default.register_node("flowers:mushroom_" .. name, {
 		description = string.sub(string.upper(name), 0, 1) ..
 			string.sub(name, 2) .. " Mushroom",
 		tiles = {"flowers_mushroom_" .. name .. ".png"},
@@ -190,7 +190,7 @@ minetest.register_abm({
 -- Waterlily
 --
 
-minetest.register_node("flowers:waterlily", {
+default.register_node("flowers:waterlily", {
 	description = "Waterlily",
 	drawtype = "nodebox",
 	paramtype = "light",

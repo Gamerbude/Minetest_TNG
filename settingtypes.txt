@@ -1,0 +1,36 @@
+#   Enables new nodes, items and functions that are only useable with the latest Minetest-dev version
+#   Don't enable this with a non-dev version.
+enable_dev_content (Enable content for Minetest-dev only) bool false
+
+#   Whether players inventory is placed into a node on death (bones node)
+enable_bones (Enable bones) bool true
+
+#   The time in seconds after which the bones of a dead player can be looted by everyone
+#   0 to disable
+shared_bones_time (Protection time of items in bones) int 1200 0 65536
+
+#   Whether fire should be disabled (all fire nodes will instantly disappear)
+disable_fire (Disable Fire) bool false
+
+#   Whether the TNT mod should be enabled
+#   Normally TNT is enabled in singleplayer and disabled in multiplayer
+enabled_tnt (Enable TNT) bool true
+
+#   The radius of a TNT explosion
+tnt_radius (Radius of a TNT explosion) int 3 1 50
+
+#   Enable the stairs mod ABM that replaces the old 'upside down'
+#   stair and slab nodes in old maps with the new param2 versions.
+enable_stairs_replace_abm (Replace stairs of old maps to new) bool false
+
+#   Whether you allow respawning in beds
+enable_beds_respawn (Enable respawning in beds) bool true
+
+#   Whether players can skip night by sleeping
+enable_beds_night_skip (Enable night skip in beds) bool true
+
+#   The time to live in seconds for dropped items
+item_ttl (Item time to live) int 300
+
+#   Drop items after digging a node and don't add them directly to the inventory
+enable_item_drop (Drop items of digged nodes) bool true

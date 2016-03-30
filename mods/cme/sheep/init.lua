@@ -21,19 +21,7 @@
 
 
 -- shears
-core.register_tool(":creatures:shears", {
-	description = "Shears",
-	inventory_image = "creatures_shears.png",
-})
-
-core.register_craft({
-	output = 'creatures:shears',
-	recipe = {
-		{'', 'default:steel_ingot'},
-		{'default:steel_ingot', 'default:stick'},
-	}
-})
-
+core.register_alias("creatures:shears", "default:shears")
 
 local function setColor(self)
 	if self and self.object then

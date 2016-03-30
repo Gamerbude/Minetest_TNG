@@ -27,7 +27,7 @@ function doors.register_door(name, def)
 	end
 
 
-	minetest.register_craftitem(name, {
+	default.register_craftitem(name, {
 		description = def.description,
 		inventory_image = def.inventory_image,
 
@@ -190,7 +190,7 @@ function doors.register_door(name, def)
 		return true
 	end
 
-	minetest.register_node(name.."_b_1", {
+	default.register_node(name.."_b_1", {
 		tiles = {tb[2], tb[2], tb[2], tb[2], tb[1], tb[1].."^[transformfx"},
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -228,7 +228,7 @@ function doors.register_door(name, def)
 		on_blast = make_on_blast(name, 1, "_b_1", "_t_1")
 	})
 
-	minetest.register_node(name.."_t_1", {
+	default.register_node(name.."_t_1", {
 		tiles = {tt[2], tt[2], tt[2], tt[2], tt[1], tt[1].."^[transformfx"},
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -271,7 +271,7 @@ function doors.register_door(name, def)
 		end
 	})
 
-	minetest.register_node(name.."_b_2", {
+	default.register_node(name.."_b_2", {
 		tiles = {tb[2], tb[2], tb[2], tb[2], tb[1].."^[transformfx", tb[1]},
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -309,7 +309,7 @@ function doors.register_door(name, def)
 		on_blast = make_on_blast(name, 1, "_b_2", "_t_2")
 	})
 
-	minetest.register_node(name.."_t_2", {
+	default.register_node(name.."_t_2", {
 		tiles = {tt[2], tt[2], tt[2], tt[2], tt[1].."^[transformfx", tt[1]},
 		paramtype = "light",
 		paramtype2 = "facedir",

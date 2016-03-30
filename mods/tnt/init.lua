@@ -228,7 +228,7 @@ function tnt.boom(pos, radius, damage_radius, disable_drops)
 end
 
 
-minetest.register_node("tnt:boom", {
+default.register_node("tnt:boom", {
 	drawtype = "plantlike",
 	tiles = {"tnt_boom.png"},
 	light_source = default.LIGHT_MAX,
@@ -242,7 +242,7 @@ minetest.register_node("tnt:boom", {
 	on_blast = function() end,
 })
 
-minetest.register_node("tnt:gunpowder", {
+default.register_node("tnt:gunpowder", {
 	description = "Gun Powder",
 	drawtype = "raillike",
 	paramtype = "light",
@@ -269,7 +269,7 @@ minetest.register_node("tnt:gunpowder", {
 	end,
 })
 
-minetest.register_node("tnt:gunpowder_burning", {
+default.register_node("tnt:gunpowder_burning", {
 	drawtype = "raillike",
 	paramtype = "light",
 	sunlight_propagates = true,

@@ -5,6 +5,7 @@ License of source code:
 -----------------------
 Copyright (C) 2012 xyz
 Copyright (C) 2014 BlockMen
+Copyright (C) 2016 LNJ <lnj.git@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -25,12 +26,16 @@ License of media (textures, sounds, meshes):
 (by Authors)
 
 xyz (WTFPL):
-   xpanes_white.png
-   xpanes_space.png
-   xpanes_pane_half.png
+  xpanes_white.png
+  xpanes_space.png
+  xpanes_pane_half.png
 
 BlockMen (WTFPL):
-   xpanes_grey.png
+  xpanes_grey.png
 
 Gambit (WTFPL):
-   xpanes_bar.png
+  xpanes_bar.png
+
+LNJ (WTFPL):
+  xpanes_pane_half_black.png, based on texture of PilzAdam (WTFPL)
+  xpanes_black.png

@@ -33,7 +33,7 @@ for _, row in ipairs(wool.dyes) do
 	local craft_color_group = row[3]
 	
 	-- Node Definition
-	minetest.register_node("wool:" .. name, {
+	default.register_node("wool:" .. name, {
 		description = desc .. " Wool",
 		tiles = {"wool_" .. name .. ".png"},
 		is_ground_content = false,
@@ -56,7 +56,7 @@ for _, row in ipairs(wool.dyes) do
 	local desc = row[2]
 	
 	-- Node Definition
-	minetest.register_node("wool:carpet_" .. name, {
+	default.register_node("wool:carpet_" .. name, {
 		description = desc .. " Carpet",
 		tiles = {"wool_" .. name .. ".png"},
 		is_ground_content = true,

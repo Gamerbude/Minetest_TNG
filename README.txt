@@ -1,8 +1,8 @@
-An improved game for the Minetest game engine [minetest_tng]
-============================================================
+The NeXt Game for the Minetest Game Engine [minetest_tng]
+=========================================================
 
 To use this game with Minetest, insert this repository as
-  /games/minetest_next
+  /games/minetest_tng
 in the Minetest Engine.
 
 The Minetest engine can be found in:
@@ -10,13 +10,12 @@ The Minetest engine can be found in:
 
 Introduction
 ------------
-Since I (LNJ / LNJplus) read that BlockMen leaves us, I decided to fork and continue BlockMen's really nice work!
+Since I (LNJ / LNJ2) read that BlockMen leaves us, so I decided to fork and continue BlockMen's really nice work!
 Of course I would really like to hear your ideas and suggestions!
-I changed the title of the game to Minetest: The NeXt Gameration. :D
+I changed the title of the game to Minetest TNG - The NeXt Game.
 
 My plans:
     - many new plants and trees
-    - CME (Creatures Mob Engine) that means some mobs
     - some nice decorations like pictures, furniture
     - many new cooking recipes
     - hunger

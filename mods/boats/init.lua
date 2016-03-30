@@ -206,7 +206,7 @@ end
 minetest.register_entity("boats:boat", boat)
 
 
-minetest.register_craftitem("boats:boat", {
+default.register_craftitem("boats:boat", {
 	description = "Boat",
 	inventory_image = "boat_inventory.png",
 	wield_image = "boat_wield.png",

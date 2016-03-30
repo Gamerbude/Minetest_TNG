@@ -4,7 +4,7 @@ This mod is part of Minetest TNG
 License of source code:
 -----------------------
 Copyright (C) 2012 celeron55, Perttu Ahola <celeron55@gmail.com>
-Copyright (C) 2016 LNJ <lnj@gmx.de>
+Copyright (C) 2016 LNJ <lnj.git@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

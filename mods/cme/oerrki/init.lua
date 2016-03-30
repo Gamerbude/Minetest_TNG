@@ -111,7 +111,7 @@ local def = {
       {"default:obsidian_shard", {min = 0, max = 3}, chance = 0.03},
       {"default:iron_lump", {min = 0, max = 3}, chance = 0.012},
       {"default:coal_lump", {min = 0, max = 3}, chance = 0.017},
-      {"default:mese_crystal_fragment", {min = 0, max = 1}, chance = 0.0075}
+      {"default:mese_crystal_fragment", {min = 0, max = 2}, chance = 0.01}
   }
 }
 

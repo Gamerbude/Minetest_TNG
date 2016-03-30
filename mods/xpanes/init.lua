@@ -119,14 +119,14 @@ function xpanes.register_pane(name, def)
 		end
 		local texture = def.textures[1]
 		if cnt == 1 then
-			texture = def.textures[1].."^"..def.textures[2]
+			texture = def.textures[1] .. "^" .. def.textures[2]
 		end
-		minetest.register_node(":xpanes:"..name.."_"..i, {
+		default.register_node(":xpanes:" .. name .. "_" .. i, {
 			drawtype = "nodebox",
 			tiles = {def.textures[3], def.textures[3], texture},
 			paramtype = "light",
 			groups = def.groups,
-			drop = "xpanes:"..name,
+			drop = "xpanes:" .. name,
 			sounds = def.sounds,
 			node_box = {
 				type = "fixed",
@@ -147,33 +147,46 @@ function xpanes.register_pane(name, def)
 		update_pane(pos, name)
 	end
 
-	minetest.register_node(":xpanes:"..name, def)
+	default.register_node(":xpanes:" .. name, def)
 
 	minetest.register_craft({
-		output = "xpanes:"..name.." 16",
+		output = "xpanes:" .. name .. " 16",
 		recipe = def.recipe
 	})
 end
 
 xpanes.register_pane("pane", {
 	description = "Glass Pane",
-	textures = {"default_glass.png","xpanes_pane_half.png","xpanes_white.png"},
+	textures = {"default_glass.png", "xpanes_pane_half.png", "xpanes_white.png"},
 	inventory_image = "default_glass.png",
 	wield_image = "default_glass.png",
 	sounds = default.node_sound_glass_defaults(),
-	groups = {snappy=2, cracky=3, oddly_breakable_by_hand=3, pane=1},
+	groups = {snappy = 2, cracky = 3, oddly_breakable_by_hand = 3, pane = 1},
 	recipe = {
 		{"default:glass", "default:glass", "default:glass"},
 		{"default:glass", "default:glass", "default:glass"}
 	}
 })
 
+xpanes.register_pane("pane_obsidian", {
+	description = "Obsidian Glass Pane",
+	textures = {"default_obsidian_glass.png", "xpanes_pane_half_black.png", "xpanes_black.png"},
+	inventory_image = "default_obsidian_glass.png",
+	wield_image = "default_obsidian_glass.png",
+	sounds = default.node_sound_glass_defaults(),
+	groups = {snappy = 2, cracky = 3, oddly_breakable_by_hand = 3, pane = 1},
+	recipe = {
+		{"default:obsidian_glass", "obsidian_glass:glass", "obsidian_glass:glass"},
+		{"default:obsidian_glass", "obsidian_glass:glass", "obsidian_glass:glass"}
+	}
+})
+
 xpanes.register_pane("bar", {
-	description = "Iron bar",
-	textures = {"xpanes_bar.png","xpanes_bar.png","xpanes_space.png"},
+	description = "Iron Bar",
+	textures = {"xpanes_bar.png", "xpanes_bar.png", "xpanes_space.png"},
 	inventory_image = "xpanes_bar.png",
 	wield_image = "xpanes_bar.png",
-	groups = {snappy=2, cracky=3, oddly_breakable_by_hand=3, pane=1},
+	groups = {snappy = 2, cracky = 3, oddly_breakable_by_hand = 3, pane = 1},
 	sounds = default.node_sound_stone_defaults(),
 	recipe = {
 		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"},

@@ -5,7 +5,7 @@ License of source code:
 -----------------------
 Copyright (C) 2011-2012 celeron55, Perttu Ahola <celeron55@gmail.com>
 Copyright (C) 2014-2015 BlockMen <blockmen2015@gmail.com>
-Copyright (C) 2016 LNJ <lnj@gmx.de>
+Copyright (C) 2016 LNJ <lnj.git@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -25,6 +25,12 @@ License of media (textures, sounds, meshes):
 --------------------------------------------
 (by Authors)
 
+Fridolin (CC BY-SA 4.0):
+  default_dry_dirt.png
+  default_papyrus_block_side.png
+  default_papyrus_block_top.png
+  gui_furnace_arrow_fg.png
+
 JBB (CC BY-SA 4.0):
   default_itemframe.png
   default_bonemeal.png
@@ -33,11 +39,12 @@ JBB (CC BY-SA 3.0):
 
 LNJ (CC BY-SA 4.0):
   default_bone.png
+  default_pear.png
+  default_vine.png
 
 Cisoun (WTFPL):
   default_lava.png
   default_sapling.png
-  default_sign_wall.png
   default_stone.png
   default_tree.png
   default_tree_top.png
@@ -82,6 +89,8 @@ PilzAdam (WTFPL):
   default_obsidian_glass.png
   default_obsidian_shard.png
   default_mineral_gold.png
+  default_item_pickup.*.ogg
+  default_item_lava.ogg
 
 jojoa1997 (WTFPL):
   default_obsidian.png
@@ -114,7 +123,11 @@ brunob.santos (CC BY-SA 4.0):
 
 BlockMen (CC BY-SA 3.0):
   bubble.png
-  gui_*.png
+  gui_formbg.png
+  gui_furnace_arrow_bg.png
+  gui_hb_bg.png
+  gui_hotbar.png
+  gui_hotbar_selected.png
   heart.png
   leaves_with_apple.obj
   torch_*.obj
@@ -156,12 +169,21 @@ BlockMen (CC BY-SA 3.0):
   default_snow_side.png
   default_snowball.png
   default_stick.png
+  default_shears.png
   default_tool_*.png
   default_wood.png
+  default_workbench_front.png
+  default_workbench_side.png
+  default_workbench_top.png
 
 sofar (CC BY-SA 3.0):
   default_birch_sapling.png
   default_birch_wood.png
+  default_fencegate_open.obj
+  default_fencegate_closed.obj
+  default_fencegate_close.ogg, remix of:
+        http://www.freesound.org/people/BarkersPinhead/sounds/274807/ (CC BY-SA 3.0) and
+        http://www.freesound.org/people/rivernile7/sounds/249573/ (CC BY-SA 3.0)
 
 Neuromancer (CC BY-SA 2.0):
   default_cobble.png, based on texture by Brane praefect
@@ -179,6 +201,11 @@ Gambit (WTFPL):
   default_clay_lump.png
   default_coal.png
   default_paper.png
+  default_sign_wall_wood.png
+  default_sign_wall_steel.png
+  default_sign_wood.png
+  default_sign_steel.png
+  default_flint.png
 
 asl97 (WTFPL):
   default_ice.png
@@ -233,3 +260,9 @@ ingar (CC BY-SA 3.0):
   default_snow_footstep.2.ogg
   default_snow_footstep.3.ogg
   default_snow_footstep.4.ogg
+
+mhtaylor67 (CC 0):
+  default_fencegate_open.ogg [http://www.freesound.org/people/mhtaylor67/sounds/126041/]
+
+Tonyka (New BSD License):
+  default_inventory_icon.png

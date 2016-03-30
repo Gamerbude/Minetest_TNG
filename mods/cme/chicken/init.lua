@@ -31,13 +31,13 @@ local function dropEgg(obj)
 end
 
 -- Flesh
-core.register_craftitem(":creatures:chicken_flesh", {
+default.register_craftitem(":creatures:chicken_flesh", {
 	description = "Raw Chicken Flesh",
 	inventory_image = "creatures_chicken_flesh.png",
 	on_use = core.item_eat(1)
 })
 
-core.register_craftitem(":creatures:chicken_meat", {
+default.register_craftitem(":creatures:chicken_meat", {
 	description = "Chicken Meat",
 	inventory_image = "creatures_chicken_meat.png",
 	on_use = core.item_eat(3)
@@ -50,7 +50,7 @@ core.register_craft({
 })
 
 -- Feather
-core.register_craftitem(":creatures:feather", {
+default.register_craftitem(":creatures:feather", {
 	description = "Feather",
 	inventory_image = "creatures_feather.png",
 })

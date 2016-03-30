@@ -21,7 +21,7 @@
 --
 
 
-core.register_craftitem(":creatures:rotten_flesh", {
+default.register_craftitem(":creatures:rotten_flesh", {
 	description = "Rotten Flesh",
 	inventory_image = "creatures_rotten_flesh.png",
 	on_use = core.item_eat(1),
@@ -109,8 +109,9 @@ local def = {
 
   drops = {
     {"creatures:rotten_flesh", {min = 1, max = 2}, chance = 0.7},
-    {"default:bone", {min = 0, max = 1}, chance = 0.05},
-    {"default:coal_lump", {min = 0, max = 3}, chance = 0.017},
+    {"default:bone", {min = 1, max = 2}, chance = 0.2},
+    {"default:coal_lump", {min = 1, max = 3}, chance = 0.017},
+    {"farming:potato", {min = 1, max = 2}, chance = 0.01}
   }
 }
 

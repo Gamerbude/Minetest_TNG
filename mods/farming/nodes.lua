@@ -16,7 +16,7 @@ minetest.override_item("default:dirt_with_grass", {
 	}
 })
 
-minetest.register_node("farming:soil", {
+default.register_node("farming:soil", {
 	description = "Soil",
 	tiles = {"default_dirt.png^farming_soil.png", "default_dirt.png"},
 	drop = "default:dirt",
@@ -29,7 +29,7 @@ minetest.register_node("farming:soil", {
 	}
 })
 
-minetest.register_node("farming:soil_wet", {
+default.register_node("farming:soil_wet", {
 	description = "Wet Soil",
 	tiles = {"default_dirt.png^farming_soil_wet.png", "default_dirt.png^farming_soil_wet_side.png"},
 	drop = "default:dirt",
@@ -50,7 +50,7 @@ minetest.override_item("default:desert_sand", {
 		wet = "farming:desert_sand_soil_wet"
 	}
 })
-minetest.register_node("farming:desert_sand_soil", {
+default.register_node("farming:desert_sand_soil", {
 	description = "Desert Sand Soil",
 	drop = "default:desert_sand",
 	tiles = {"farming_desert_sand_soil.png", "default_desert_sand.png"},
@@ -63,7 +63,7 @@ minetest.register_node("farming:desert_sand_soil", {
 	}
 })
 
-minetest.register_node("farming:desert_sand_soil_wet", {
+default.register_node("farming:desert_sand_soil_wet", {
 	description = "Wet Desert Sand Soil",
 	drop = "default:desert_sand",
 	tiles = {"farming_desert_sand_soil_wet.png", "farming_desert_sand_soil_wet_side.png"},
@@ -76,12 +76,15 @@ minetest.register_node("farming:desert_sand_soil_wet", {
 	}
 })
 
-minetest.register_node("farming:straw", {
+default.register_node("farming:straw", {
+	register = {stair = true, slab = true},
 	description = "Straw",
 	tiles = {"farming_straw.png"},
 	is_ground_content = false,
 	groups = {snappy = 3, flammable = 4},
 	sounds = default.node_sound_leaves_defaults(),
+	stair = {legacy_alias = "stairs:stair_straw"},
+	slab = {legacy_alias = "stairs:slab_straw"},
 })
 
 minetest.register_abm({

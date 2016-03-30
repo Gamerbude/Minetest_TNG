@@ -20,11 +20,13 @@ Overview:
 	- Farming API, #Hoe Definition, #Plant definition
 	- TNT API, #TNT definition
 	- Screwdriver API
-	- Stairs API
+	- Stairs API, #Stair definition, #Slab definition
 	- Xpanes API, #Pane definition
 	- Fence API, #Fence definition
+	- Fence Gate API, #Fence Gate definition
 	- Table API, #Table definition
 	- Player API, #Model definition
+	- Achievement API, #Achievement definition
 	- Raillike definitions
 	- Default sounds
 	- Default constants
@@ -219,34 +221,57 @@ on_rotate(pos, node, user, mode, new_param2)
 ^ use on_rotate = screwdriver.disallow to always disallow rotation
 ^ use on_rotate = screwdriver.rotate_simple to allow only face rotation
 
+
 Stairs API
 ----------
-The stairs API lets you register stairs and slabs and ensures that they are registered the same way as those
-delivered with minetest_game, to keep them compatible with other mods.
+The stairs API lets you register stairs and slabs.
 
-stairs.register_stair(subname, recipeitem, groups, images, description, sounds)
- -> Registers a stair.
- -> subname: Basically the material name (e.g. cobble) used for the stair name. Nodename pattern: "stairs:stair_subname"
- -> recipeitem: Item used in the craft recipe, e.g. "default:cobble"
- -> groups: see [Known damage and digging time defining groups]
- -> images: see [Tile definition]
- -> description: used for the description field in the stair's definition
- -> sounds: see [#Default sounds]
+default.register_stair(name, def)
+  -> name: used for nodename and crafting recipes
+  -> def: See [#Stair definition]
 
-stairs.register_slab(subname, recipeitem, groups, images, description, sounds)
- -> Registers a slabs
- -> subname: Basically the material name (e.g. cobble) used for the stair name. Nodename pattern: "stairs:stair_subname"
- -> recipeitem: Item used in the craft recipe, e.g. "default:cobble"
- -> groups: see [Known damage and digging time defining groups]
- -> images: see [Tile definition]
- -> description: used for the description field in the stair's definition
- -> sounds: see [#Default sounds]
+default.register_slab(name, def)
+  -> name: used for nodename and crafting recipes
+  -> def: See [#Slab definition]
 
-stairs.register_stair_and_slab(subname, recipeitem, groups, images, desc_stair, desc_slab, sounds)
- -> A wrapper for stairs.register_stair and stairs.register_slab
- -> Uses almost the same arguments as stairs.register_stair
- -> desc_stair: Description for stair node
- -> desc_slab: Description for slab node
+#Stair definition
+-----------------
+{
+	description = "Stone Stair",
+	^ The name / description of the stair
+	tiles = {"default_stone.png"},
+	^ The images for the node.
+	material = "default:stone",
+	^ The material which you need to craft the stair.
+	groups = {cracky = 3},
+	^ The groups of the stair. If that isn't defined it equals {stair = 1}.
+	sounds = default.node_sound_stone_defaults(),
+	^ The sounds of the stair.
+	no_craft = false,
+	^ If you don't want that the crafting recipe will be registered.
+	legacy_alias = "stairs:stair_stone"
+	^ An alias will be registered for compatibility with the old API
+}
+
+#Slab definition
+----------------
+{
+	description = "Stone Slab",
+	^ The name / description of the slab
+	tiles = {"default_stone.png"},
+	^ The images for the node.
+	material = "default:stone",
+	^ The material which you need to craft the slab.
+	groups = {cracky = 3},
+	^ The groups of the slab. If that isn't defined it equals {stair = 1}.
+	sounds = default.node_sound_stone_defaults(),
+	^ The sounds of the stair.
+	no_craft = false,
+	^ If you don't want that the crafting recipe will be registered.
+	legacy_alias = "stairs:slab_stone"
+	^ An alias will be registered for compatibility with the old API
+}
+ 
 
 Xpanes API
 ----------
@@ -291,6 +316,35 @@ default.register_fence(itemstring, def)
 	  oddly_breakable_by_hand = 2, flammable = 2, fuel = 4}.
 	sounds = default.node_sound_wood_defaults()
 	^ The sounds of the fence. If it isn't defined it equals default.node_sound_wood_defaults().
+	no_craft = false,
+	^ If you don't want that the crafting recipe will be registered.
+}
+
+Fence Gate API
+--------------
+Creates fences gates of given material.
+
+default.register_fencegate(itemstring, def)
+ -> itemstring: used for nodename and crafting recipes.
+ -> def: See [#Fence Gate deinition]
+
+#Fence Gate definition
+----------------------
+{
+	description = "Wooden Fence Gate",
+	^ The name / description of the fence
+	texture = "default_wood.png",
+	^ The texture for the node. It is used to create the inventory texture too.
+	  You can also use tiles = {"default_wood.png"}.
+	material = "default:wood",
+	^ The material which you need to craft the fence gate.
+	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, fuel = 4},
+	^ The groups of the fence gate. If it isn't defined it equals {choppy = 2, 
+	  oddly_breakable_by_hand = 2, flammable = 2, fuel = 4, gate = 1}.
+	sounds = default.node_sound_wood_defaults()
+	^ The sounds of the fence. If it isn't defined it equals default.node_sound_wood_defaults().
+	no_craft = false,
+	^ If you don't want that the crafting recipe will be registered.
 }
 
 Table API
@@ -370,6 +424,44 @@ default.player_get_animation(player)
 	},
 }
 
+Achievement API
+---------------
+With the Achievement API you can easily register achievements that are shown the player.
+
+awards.register_achievement(name, def)
+^ Registers an achivement.
+ -> name: the name of the achievement
+ -> def: See [#Achivement definition]
+
+awards.give_achievement(name, award)
+^ Gives a player an achivement.
+ -> name: the name of the player
+ -> award: the name of the achievement
+
+#Achivement definition
+----------------------
+{
+	name = "Light It Up",
+	^ The shown name of the achievement
+	description = "Place 100 torches."
+	^ A description for the achievement (that the user knows what to do).
+	sound = "",
+	^ A sound to play, optional.
+	icon = "awards_novicebuilder.png",
+	^ A texture that is shown.
+	trigger = {
+		type = "place",
+		^ The type of the achievement. (available are: place, dig, death, chat, join)
+		node = "default:torch",
+		^ The node which should be placed / digged. (Only needed for type = "place" or "dig")
+		target = "100",
+		^ How often the player have to to this.
+	},
+	secret = false
+	^ If true the player has to unlock it to find out what it is.
+}
+
+
 Raillike definitions
 --------------------
 The following nodes use the group `connect_to_raillike` and will only connect to
@@ -404,6 +496,9 @@ Default constants
 -----------------
 default.LIGHT_MAX
 ^ The maximum light level (see [Node definition] light_source)
+
+default.STACK_MAX
+^ The normal maximum stack size
 
 Leafdecay
 ---------

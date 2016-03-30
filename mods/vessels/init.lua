@@ -13,7 +13,7 @@ local vessels_shelf_formspec =
 	"listring[current_player;main]"..
 	default.get_hotbar_bg(0,2.85)
 
-minetest.register_node("vessels:shelf", {
+default.register_node("vessels:shelf", {
 	description = "Vessels shelf",
 	tiles = {"default_wood.png", "default_wood.png", "default_wood.png^vessels_shelf.png"},
 	is_ground_content = false,
@@ -84,7 +84,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_node("vessels:glass_bottle", {
+default.register_node("vessels:glass_bottle", {
 	description = "Glass Bottle (empty)",
 	drawtype = "plantlike",
 	tiles = {"vessels_glass_bottle.png"},
@@ -110,7 +110,7 @@ minetest.register_craft( {
 	}
 })
 
-minetest.register_node("vessels:drinking_glass", {
+default.register_node("vessels:drinking_glass", {
 	description = "Drinking Glass (empty)",
 	drawtype = "plantlike",
 	tiles = {"vessels_drinking_glass.png"},
@@ -136,7 +136,7 @@ minetest.register_craft( {
 	}
 })
 
-minetest.register_node("vessels:steel_bottle", {
+default.register_node("vessels:steel_bottle", {
 	description = "Heavy Steel Bottle (empty)",
 	drawtype = "plantlike",
 	tiles = {"vessels_steel_bottle.png"},
@@ -165,7 +165,7 @@ minetest.register_craft( {
 
 -- Make sure we can recycle them
 
-minetest.register_craftitem("vessels:glass_fragments", {
+default.register_craftitem("vessels:glass_fragments", {
 	description = "Pile of Glass Fragments",
 	inventory_image = "vessels_glass_fragments.png",
 })
