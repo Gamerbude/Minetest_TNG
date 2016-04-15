@@ -179,7 +179,3 @@ minetest.register_craft({
 		{'', 'default:steel_ingot', ''},
 	}
 })
-
-minetest.register_alias("bucket", "bucket:bucket_empty")
-minetest.register_alias("bucket_water", "bucket:bucket_water")
-minetest.register_alias("bucket_lava", "bucket:bucket_lava")
