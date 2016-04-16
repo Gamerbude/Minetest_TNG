@@ -70,7 +70,7 @@ for length = 1, 5 do
 end
 
 -- Dry shrubs
-	core.register_decoration({
+core.register_decoration({
 	deco_type = "simple",
 	place_on = {"default:desert_sand", "default:dirt_with_snow"},
 	sidelen = 16,
@@ -89,21 +89,22 @@ end
 
 -- Birch trees
 core.register_decoration({
-		deco_type = "schematic",
-		place_on = {"default:dirt_with_grass"},
-		sidelen = 16,
-		noise_params = {
-			offset = 0,
-			scale = 0.004,
-			spread = {x = 100, y = 100, z = 100},
-			seed = 2339,
-			octaves = 3,
-			persist = 0.6
-		},
-		y_min = 0,
-		y_max = 30,
-		schematic = core.get_modpath("default").."/schematics/birch_tree.mts",
-		flags = "place_center_x, place_center_z",
-	})
+	deco_type = "schematic",
+	place_on = {"default:dirt_with_grass"},
+	sidelen = 16,
+	noise_params = {
+		offset = 0,
+		scale = 0.004,
+		spread = {x = 100, y = 100, z = 100},
+		seed = 2339,
+		octaves = 3,
+		persist = 0.6
+	},
+	y_min = 0,
+	y_max = 30,
+	schematic = core.get_modpath("default").."/schematics/birch_tree.mts",
+	flags = "place_center_x, place_center_z",
+})
 
 core.register_on_generated(default.generate_nyancats)
+core.register_on_generated(default.generate_ruins)

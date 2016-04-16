@@ -16,7 +16,7 @@ core.register_biome({
 	depth_filler = 3,
 	node_stone = "default:ice",
 	node_water_top = "default:ice",
-	depth_water_top = 10,
+	depth_water_top = 5,
 	--node_water = "",
 	node_river_water = "default:ice",
 	y_min = -8,
@@ -50,7 +50,7 @@ core.register_biome({
 	node_top = "default:dirt_with_snow",
 	depth_top = 1,
 	node_filler = "default:dirt",
-	depth_filler = 0,
+	depth_filler = 3,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -68,7 +68,7 @@ core.register_biome({
 	node_top = "default:sand",
 	depth_top = 1,
 	node_filler = "default:sand",
-	depth_filler = 2,
+	depth_filler = 3,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -86,7 +86,7 @@ core.register_biome({
 	node_top = "default:snowblock",
 	depth_top = 1,
 	node_filler = "default:dirt",
-	depth_filler = 2,
+	depth_filler = 4,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -104,7 +104,7 @@ core.register_biome({
 	node_top = "default:sand",
 	depth_top = 1,
 	node_filler = "default:sand",
-	depth_filler = 2,
+	depth_filler = 3,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -123,7 +123,7 @@ core.register_biome({
 	node_top = "default:dirt_with_grass",
 	depth_top = 1,
 	node_filler = "default:dirt",
-	depth_filler = 0,
+	depth_filler = 4,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -141,7 +141,7 @@ core.register_biome({
 	node_top = "default:sand",
 	depth_top = 1,
 	node_filler = "default:sand",
-	depth_filler = 2,
+	depth_filler = 3,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -159,7 +159,7 @@ core.register_biome({
 	node_top = "default:dirt_with_grass",
 	depth_top = 1,
 	node_filler = "default:dirt",
-	depth_filler = 2,
+	depth_filler = 4,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -177,7 +177,7 @@ core.register_biome({
 	node_top = "default:sand",
 	depth_top = 1,
 	node_filler = "default:sand",
-	depth_filler = 2,
+	depth_filler = 6,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -195,7 +195,7 @@ core.register_biome({
 	node_top = "default:sand",
 	depth_top = 1,
 	node_filler = "default:sand",
-	depth_filler = 2,
+	depth_filler = 4,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -213,7 +213,7 @@ core.register_biome({
 	node_top = "default:dirt_with_grass",
 	depth_top = 1,
 	node_filler = "default:dirt",
-	depth_filler = 0,
+	depth_filler = 2,
 	node_stone = "default:sandstone",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -231,7 +231,7 @@ core.register_biome({
 	node_top = "default:sand",
 	depth_top = 1,
 	node_filler = "default:sand",
-	depth_filler = 2,
+	depth_filler = 3,
 	node_stone = "default:sandstone",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -249,7 +249,7 @@ core.register_biome({
 	node_top = "default:dirt_with_grass",
 	depth_top = 1,
 	node_filler = "default:dirt",
-	depth_filler = 2,
+	depth_filler = 3,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -267,7 +267,7 @@ core.register_biome({
 	node_top = "default:dirt",
 	depth_top = 1,
 	node_filler = "default:dirt",
-	depth_filler = 2,
+	depth_filler = 3,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -285,7 +285,7 @@ core.register_biome({
 	node_top = "default:sand",
 	depth_top = 1,
 	node_filler = "default:sand",
-	depth_filler = 2,
+	depth_filler = 3,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -297,6 +297,96 @@ core.register_biome({
 	humidity_point = 75,
 })
 
+core.register_biome({
+	name = "maple_forest",
+	--node_dust = "",
+	node_top = "default:dirt_with_grass",
+	depth_top = 1,
+	node_filler = "default:dirt",
+	depth_filler = 6,
+	node_stone = "default:stone",
+	--node_water_top = "",
+	--depth_water_top = ,
+	--node_water = "",
+	--node_river_water = "",
+	y_min = 2,
+	y_max = 31000,
+	heat_point = 65,
+	humidity_point = 75,
+})
+
+core.register_biome({
+	name = "red_maple_forest",
+	--node_dust = "",
+	node_top = "default:dirt_with_grass",
+	depth_top = 1,
+	node_filler = "default:dirt",
+	depth_filler = 6,
+	--node_stone = "",
+	--node_water_top = "",
+	--depth_water_top = ,
+	--node_water = "",
+	--node_river_water = "",
+	y_min = 2,
+	y_max = 31000,
+	heat_point = 65,
+	humidity_point = 70,
+})
+
+core.register_biome({
+	name = "mixed_maple_forest",
+	--node_dust = "",
+	node_top = "default:dirt_with_grass",
+	depth_top = 1,
+	node_filler = "default:dirt",
+	depth_filler = 6,
+	--node_stone = "",
+	--node_water_top = "",
+	--depth_water_top = ,
+	--node_water = "",
+	--node_river_water = "",
+	y_min = 1,
+	y_max = 31000,
+	heat_point = 70,
+	humidity_point = 70,
+})
+
+core.register_biome({
+	name = "cherry_tree_forest",
+	--node_dust = "",
+	node_top = "default:dirt_with_grass",
+	depth_top = 1,
+	node_filler = "default:dirt",
+	depth_filler = 5,
+	--node_stone = "",
+	--node_water_top = "",
+	--depth_water_top = ,
+	--node_water = "",
+	--node_river_water = "",
+	y_min = 1,
+	y_max = 31000,
+	heat_point = 68,
+	humidity_point = 70,
+})
+
+core.register_biome({
+	name = "birch_forest_sandstone",
+	--node_dust = "",
+	node_top = "default:dirt_with_grass",
+	depth_top = 1,
+	node_filler = "default:dirt",
+	depth_filler = 2,
+	node_stone = "default:sandstone",
+	--node_water_top = "",
+	--depth_water_top = ,
+	--node_water = "",
+	--node_river_water = "",
+	y_min = 5,
+	y_max = 31000,
+	heat_point = 70,
+	humidity_point = 25,
+})
+
 -- Hot
 core.register_biome({
 	name = "desert",
@@ -304,7 +394,7 @@ core.register_biome({
 	node_top = "default:desert_sand",
 	depth_top = 1,
 	node_filler = "default:desert_sand",
-	depth_filler = 1,
+	depth_filler = 3,
 	node_stone = "default:desert_stone",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -322,7 +412,7 @@ core.register_biome({
 	node_top = "default:sand",
 	depth_top = 1,
 	node_filler = "default:sand",
-	depth_filler = 2,
+	depth_filler = 5,
 	node_stone = "default:desert_stone",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -340,7 +430,7 @@ core.register_biome({
 	node_top = "default:dirt_with_dry_grass",
 	depth_top = 1,
 	node_filler = "default:dirt",
-	depth_filler = 1,
+	depth_filler = 3,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -358,7 +448,7 @@ core.register_biome({
 	node_top = "default:dirt",
 	depth_top = 1,
 	node_filler = "default:dirt",
-	depth_filler = 2,
+	depth_filler = 3,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -376,7 +466,7 @@ core.register_biome({
 	node_top = "default:sand",
 	depth_top = 1,
 	node_filler = "default:sand",
-	depth_filler = 2,
+	depth_filler = 3,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -394,7 +484,7 @@ core.register_biome({
 	node_top = "default:dirt_with_grass",
 	depth_top = 1,
 	node_filler = "default:dirt",
-	depth_filler = 2,
+	depth_filler = 4,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -412,7 +502,7 @@ core.register_biome({
 	node_top = "default:dirt",
 	depth_top = 1,
 	node_filler = "default:dirt",
-	depth_filler = 2,
+	depth_filler = 3,
 	--node_stone = "",
 	--node_water_top = "",
 	--depth_water_top = ,
@@ -468,20 +558,24 @@ core.register_biome({
 
 local function register_grass_decoration(offset, scale, length, dry)
 	local name = "default:grass_"
-	local biome = {"stone_grassland", "sandstone_grassland",
-			"deciduous_forest", "coniferous_forest", "coniferous_forest_dunes"}
+	local biome = {"stone_grassland", "sandstone_grassland", "birch_forest_sandstone",
+			"deciduous_forest", "coniferous_forest", "coniferous_forest_dunes",
+			"maple_forest", "red_maple_forest", "mixed_maple_forest",
+			"cherry_tree_forest"}
+	local place_on = {"default:dirt_with_grass", "default:sand"}
 	if dry then
 		name = "default:dry_grass_"
 		biome = {"savanna"}
+		place_on = {"default:dirt_with_dry_grass"}
 	end
 	core.register_decoration({
 		deco_type = "simple",
-		place_on = {"default:dirt_with_grass", "default:sand"},
+		place_on = place_on,
 		sidelen = 16,
 		noise_params = {
 			offset = offset,
 			scale = scale,
-			spread = {x = 200, y = 200, z = 200},
+			spread = {x = 250, y = 250, z = 250},
 			seed = 329,
 			octaves = 3,
 			persist = 0.6
@@ -494,102 +588,6 @@ local function register_grass_decoration(offset, scale, length, dry)
 end
 
 core.clear_registered_decorations()
-
--- Apple tree
-core.register_decoration({
-	deco_type = "schematic",
-	place_on = {"default:dirt_with_grass"},
-	sidelen = 16,
-	noise_params = {
-		offset = 0.04,
-		scale = 0.02,
-		spread = {x = 250, y = 250, z = 250},
-		seed = 2,
-		octaves = 3,
-		persist = 0.66
-	},
-	biomes = {"deciduous_forest"},
-	y_min = 1,
-	y_max = 31000,
-	schematic = core.get_modpath("default").."/schematics/apple_tree.mts",
-	flags = "place_center_x, place_center_z",
-})
-
--- Jungle tree
-core.register_decoration({
-	deco_type = "schematic",
-	place_on = {"default:dirt_with_grass", "default:dirt"},
-	sidelen = 80,
-	fill_ratio = 0.09,
-	biomes = {"rainforest", "rainforest_swamp"},
-	y_min = 0,
-	y_max = 31000,
-	schematic = core.get_modpath("default").."/schematics/jungle_tree.mts",
-	flags = "place_center_x, place_center_z",
-	rotation = "random",
-})
-
--- Taiga and temperate forest pine tree
-core.register_decoration({
-	deco_type = "schematic",
-	place_on = {"default:snowblock", "default:dirt_with_grass"},
-	sidelen = 16,
-	noise_params = {
-		offset = 0.04,
-		scale = 0.02,
-		spread = {x = 250, y = 250, z = 250},
-		seed = 2,
-		octaves = 3,
-		persist = 0.66
-	},
-	biomes = {"taiga", "coniferous_forest"},
-	y_min = 2,
-	y_max = 31000,
-	schematic = core.get_modpath("default").."/schematics/pine_tree.mts",
-	flags = "place_center_x, place_center_z",
-})
-
--- Acacia tree
-core.register_decoration({
-	deco_type = "schematic",
-	place_on = {"default:dirt_with_dry_grass"},
-	sidelen = 80,
-	noise_params = {
-		offset = 0,
-		scale = 0.003,
-		spread = {x = 250, y = 250, z = 250},
-		seed = 2,
-		octaves = 3,
-		persist = 0.66
-	},
-	biomes = {"savanna"},
-	y_min = 1,
-	y_max = 31000,
-	schematic = core.get_modpath("default").."/schematics/acacia_tree.mts",
-	flags = "place_center_x, place_center_z",
-	rotation = "random",
-})
-
--- Birch tree
-core.register_decoration({
-	deco_type = "schematic",
-	place_on = {"default:dirt_with_grass"},
-	sidelen = 16,
-	noise_params = {
-		offset = 0.01,
-		scale = -0.02,
-		spread = {x = 250, y = 250, z = 250},
-		seed = 2,
-		octaves = 3,
-		persist = 0.66
-	},
-	biomes = {"sandstone_grassland",  "deciduous_forest"},
-	y_min = 1,
-	y_max = 31000,
-	schematic = core.get_modpath("default").."/schematics/birch_tree.mts",
-	flags = "place_center_x, place_center_z",
-	rotation = "random",
-})
 
 -- Large cactus
 core.register_decoration({
@@ -699,3 +697,4 @@ core.register_decoration({
 
 
 core.register_on_generated(default.generate_nyancats)
+core.register_on_generated(default.generate_ruins)

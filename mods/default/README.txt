@@ -36,6 +36,17 @@ Fridolin (CC BY-SA 4.0):
 JBB (CC BY-SA 4.0):
   default_itemframe.png
   default_bonemeal.png
+  default_cherry_blossoms.png
+  default_cherry_blossoms_simple.png
+  default_cherry_sapling.png
+  default_maple_leaves.png
+  default_maple_leaves_simple.png
+  default_maple_sapling.png
+  default_maple_tree.png
+  default_maple_tree_top.png
+  default_red_maple_leaves.png
+  default_red_maple_leaves_simple.png
+  default_red_maple_sapling.png
 JBB (CC BY-SA 3.0):
   default_jungleleaves.png, based on texture of BlockMen (CC BY-SA 3.0)
 
@@ -43,6 +54,7 @@ LNJ (CC BY-SA 4.0):
   default_bone.png
   default_pear.png
   default_vine.png
+  default_cherry_wood.png
 
 kilbith (WTFPL):
   default_trash_icon.png
@@ -281,4 +293,7 @@ mhtaylor67 (CC 0):
 
 Tonyka (New BSD License):
   default_inventory_icon.png
-  
+
+rui914 (WTFPL):
+  default_cherry_tree.png
+  default_cherry_tree_top.png

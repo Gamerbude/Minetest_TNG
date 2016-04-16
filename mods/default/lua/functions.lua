@@ -19,3 +19,10 @@ function default.is_day()
 
 	return false
 end
+
+-- schematic path
+function default.get_schematic_path(modname, name)
+	if not modname or not name then return end
+	
+	return core.get_modpath(modname) .. "/schematics/" .. name
+end

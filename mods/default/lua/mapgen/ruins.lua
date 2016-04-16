@@ -166,7 +166,7 @@ local function generate_sized(pos, size)
 	door(pos, size)
 end
 
-core.register_on_generated(function(minp, maxp, seed)
+function default.generate_ruins(minp, maxp, seed)
 	if not (math.random(1, 25) == 1) then
 		return
 	end
@@ -193,4 +193,4 @@ core.register_on_generated(function(minp, maxp, seed)
 			generate_sized(point, {x = math.random(6, 9), z = math.random(6, 9)})
 		end)
 	end
-end)
+end

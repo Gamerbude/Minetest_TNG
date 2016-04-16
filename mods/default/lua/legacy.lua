@@ -24,10 +24,19 @@ LIGHT_MAX = default.LIGHT_MAX
 -- Formspecs
 default.gui_suvival_form = default.gui_survival_form
 
---
--- Old stairs and slabs API
---
+-- Tree growing
+default.grow_apple_tree = default.grow_tree["default:apple"]
+default.grow_new_apple_tree = default.grow_tree["default:apple"]
+default.grow_jungle_tree = default.grow_tree["default:jungle"]
+default.grow_new_jungle_tree = default.grow_tree["default:jungle"]
+default.grow_pine_tree = default.grow_tree["default:pine"]
+default.grow_new_pine_tree = default.grow_tree["default:pine"]
+default.grow_new_acacia_tree = default.grow_tree["default:acacia"]
+default.grow_new_birch_tree = default.grow_tree["default:birch"]
+default.grow_new_aspen_tree = default.grow_tree["default:birch"]
 
+
+-- Old stairs and slabs API
 stairs = {}
 
 -- stairs

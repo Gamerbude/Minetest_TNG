@@ -10,6 +10,8 @@ function default.register_planks(name, def)
 	def.fence = def.fence or {description = def.description_prefix .. " Fence"}
 	def.fencegate = def.fencegate or {description = def.description_prefix .. " Fence Gate"}
 
+	def.groups.wood = 1
+
 	-- clean up vars
 	def.description_prefix = nil
 	def.name = nil
@@ -63,7 +65,7 @@ end
 function default.register_sapling(name, def)
 	local growtime = def.growtime or 300
 	growtime = growtime * default.GROW_TIME_FACTOR
-	local on_grow = def.on_grow or default.grow_sapling
+	local on_grow = def.on_grow
 	
 	def.drawtype = "plantlike"
 	def.tiles = def.tiles or {def.texture}
@@ -96,22 +98,27 @@ function default.register_sapling(name, def)
 	default.register_node(name, def)
 end
 
+function default.register_tree_generation(def)
+	def.deco_type = def.deco_type	or "schematic"
+	def.flags = 	def.flags	or "place_center_x, place_center_z"
+	def.place_on =	def.place_on	or {"default:dirt_with_grass"}
+	def.y_min = 	def.y_min	or 1
+	def.y_max = 	def.y_max	or 31000
+	def.rotation = 	def.rotation	or "random"
+	def.sidelen = 	def.sidelen	or 16
+	
+	core.register_decoration(def)
+end
+
 function default.register_tree(name, def)
-	-- everything should be registered if no info. is given
-	def.register = def.register			or {}
-	def.register.log = def.register.log		or true
-	def.register.leaves = def.register.leaves	or true
-	def.register.sapling = def.register.sapling	or true
-	def.register.planks = def.register.planks	or true
-
-
 	-- check that everything is defined
-	def.log = def.log				or {}
-	def.leaves = def.leaves				or {}
-	def.sapling = def.sapling			or {}
-	def.planks = def.planks				or {}
+	def.log = def.log		or {}
+	def.leaves = def.leaves		or {}
+	def.sapling = def.sapling	or {}
+	def.planks = def.planks		or {}
+	def.mapgen = def.mapgen		or {}
 
-	def.texture_prefix = def.texture_prefix		or ""
+	def.texture_prefix = def.texture_prefix or "default"
 
 
 	-- get correct texture names
@@ -130,24 +137,85 @@ function default.register_tree(name, def)
 	def.planks.description = def.planks.description			or def.description .. " Wood Planks"
 	def.planks.description_prefix = def.planks.description_prefix	or def.description .. " Wood"
 
+
 	-- other values
 	def.leaves.sapling_name = def.sapling.name	or name .. "_sapling"
+	def.sapling.schematic = def.sapling.schematic	or def.schematic or nil
+	def.mapgen.schematic = def.mapgen.schematic	or def.schematic or nil
 
+
+	-- sapling growing functions
+	if def.sapling.growing_type == "schematic" then
+		default.grow_tree[name] = function(pos)
+			if not default.can_grow(pos) then
+				return false
+			end
+			
+			core.log("action", "A \"" .. def.sapling.description .. "\" grows into a tree at " .. core.pos_to_string(pos))
+			
+			-- remove sapling
+			core.remove_node(pos)
+
+			-- place the schematic
+			local path = def.sapling.schematic
+			core.place_schematic({x = pos.x - def.sapling.schematic_size.x, y = pos.y - def.sapling.schematic_size.y, z = pos.z - def.sapling.schematic_size.z}, path, "random", def.sapling.schematic_replace or nil, false)
+			return true
+		end
+		-- set the sapling growing function
+		def.sapling.on_grow = default.grow_tree[name]
+	elseif def.sapling.growing_type == "schematic_and_function" then
+		default.grow_mgv6_tree[name] = def.sapling.mgv6_grow
+		
+		default.grow_tree[name] = function(pos)
+			if not default.can_grow(pos) then
+				return false
+			end
+			
+			core.log("action", "A \"" .. def.sapling.description .. "\" grows into a tree at " .. core.pos_to_string(pos))
+			
+			if core.get_mapgen_params().mgname == "v6" then
+				-- grow tree with function
+				default.grow_mgv6_tree[name](pos)
+			else
+				-- remove the sapling
+				core.remove_node(pos)
+				-- place schematic
+				local path = def.sapling.schematic
+				core.place_schematic({x = pos.x - def.sapling.schematic_size.x, y = pos.y - def.sapling.schematic_size.y, z = pos.z - def.sapling.schematic_size.z}, path, "random", def.sapling.schematic_replace or nil, false)
+			end
+			return true
+		end
+		-- set the sapling growing function
+		def.sapling.on_grow = default.grow_tree[name]
+	end
 
 	-- log / tree
-	if def.register.log then
+	if def.register.log == true then
 		default.register_log(def.log.name or name .. "_tree", def.log)
 	end
 	-- leaves
-	if def.register.leaves then
+	if def.register.leaves == true then
 		default.register_leaves(def.leaves.name or name .. "_leaves", def.leaves)
 	end
 	-- sapling
-	if def.register.sapling then
+	if def.register.sapling == true then
 		default.register_sapling(def.sapling.name or name .. "_sapling", def.sapling)
 	end
 	-- planks / wood
-	if def.register.planks then
+	if def.register.planks == true then
 		default.register_planks(def.planks.name or name .. "_wood", def.planks)
+	end
+	-- map generation
+	if def.register.mapgen == true and core.get_mapgen_params().mgname ~= "v6" then -- dont register in mgv6
+		default.register_tree_generation(def.mapgen)
+	end
+	
+	if not def.no_craft then
+		core.register_craft({
+			output = (def.planks.name or name .. "_wood") .. " 4",
+			recipe = {
+				{def.log.name or name .. "_tree"},
+			},
+		})
 	end
 end

@@ -105,7 +105,7 @@ local def = {
     max_number = 1,
     number = 2,
     light = {min = 0, max = 8},
-    height_limit = {min = default.get_difficult_and_set(-160, -200, -350), max = 50},
+    height_limit = {min = default.get_difficult_and_set(-160, -200, -350), max = 150},
 
     spawn_egg = {
       description = "Zombie Spawn-Egg",

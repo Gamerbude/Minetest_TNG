@@ -1,41 +1,6 @@
 -- mods/default/lua/crafting.lua
 
 core.register_craft({
-	output = "default:wood 4",
-	recipe = {
-		{"default:tree"},
-	}
-})
-
-core.register_craft({
-	output = "default:junglewood 4",
-	recipe = {
-		{"default:jungletree"},
-	}
-})
-
-core.register_craft({
-	output = "default:pine_wood 4",
-	recipe = {
-		{"default:pine_tree"},
-	}
-})
-
-core.register_craft({
-	output = "default:acacia_wood 4",
-	recipe = {
-		{"default:acacia_tree"},
-	}
-})
-
-core.register_craft({
-	output = "default:birch_wood 4",
-	recipe = {
-		{"default:birch_tree"},
-	}
-})
-
-core.register_craft({
 	output = "default:stick 4",
 	recipe = {
 		{"group:wood"},

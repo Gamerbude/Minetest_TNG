@@ -10,6 +10,8 @@ local modpath = core.get_modpath("default")
 local luapath = modpath .. "/lua/"
 local nodepath = modpath .. "/lua/nodes/"
 local itempath = modpath .. "/lua/items/"
+local mapgenpath = modpath .. "/lua/mapgen/"
+local apipath = modpath .. "/lua/apis/"
 
 local mg_name = core.get_mapgen_params().mgname or ""
 
@@ -25,20 +27,36 @@ dofile(luapath .. "sounds.lua")
 
 
 --
+-- Map Generation
+--
+
+dofile(mapgenpath .. "aliases.lua")
+dofile(mapgenpath .. "ores.lua")
+dofile(mapgenpath .. "nyancats.lua")
+dofile(mapgenpath .. "ruins.lua")
+if mg_name == "v6" then
+	dofile(mapgenpath .. "mapgenv6.lua")
+else
+	dofile(mapgenpath .. "mapgenv57.lua")
+end
+
+
+--
 -- APIs
 --
 
-dofile(luapath .. "apis/carpets.lua")
-dofile(luapath .. "apis/fences.lua")
-dofile(luapath .. "apis/fencegates.lua")
-dofile(luapath .. "apis/player.lua")
-dofile(luapath .. "apis/screwdriver.lua")
-dofile(luapath .. "apis/slabs.lua")
-dofile(luapath .. "apis/stairs.lua")
-dofile(luapath .. "apis/tables.lua")
-dofile(luapath .. "apis/tree_growing.lua")
-dofile(luapath .. "apis/trees.lua")
-dofile(luapath .. "apis/walls.lua")
+dofile(apipath .. "carpets.lua")
+dofile(apipath .. "fences.lua")
+dofile(apipath .. "fencegates.lua")
+dofile(apipath .. "player.lua")
+dofile(apipath .. "screwdriver.lua")
+dofile(apipath .. "slabs.lua")
+dofile(apipath .. "stairs.lua")
+dofile(apipath .. "tables.lua")
+dofile(apipath .. "tree_growing.lua")
+dofile(apipath .. "trees.lua")
+dofile(apipath .. "walls.lua")
+
 
 --
 -- Nodes
@@ -122,20 +140,7 @@ dofile(luapath .. "crafting.lua")
 
 
 --
--- Map Generation
---
-
-dofile(luapath .. "mapgen/mapgen.lua")
-if mg_name == "v6" then
-	dofile(luapath .. "mapgen/mapgenv6.lua")
-elseif mg_name == "v5" or mg_name == "v7" or mg_name == "valleys" then
-	dofile(luapath .. "mapgen/mapgenv57.lua")
-end
-dofile(luapath .. "mapgen/ruins.lua")
-
-
---
--- Features
+-- Other Features
 --
 
 dofile(luapath .. "chat_cmds.lua")
