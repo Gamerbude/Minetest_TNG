@@ -20,7 +20,11 @@ default.register_tree("default:apple_tree", { -- can be used for default.grow_tr
 		growtime = 300,
 		growing_type = "schematic_and_function",
 		mgv6_grow = function(pos)
-			default.grow_apple_tree(pos, math.random(1, 4) == 1) --  see mods/default/lua/apis/tree_growing
+			if not default.can_grow() then
+				return false
+			end
+			
+			return default.grow_apple_tree(pos, math.random(1, 4) == 1) --  see mods/default/lua/apis/tree_growing
 		end
 	},
 	planks = {
@@ -52,6 +56,10 @@ default.register_tree("default:jungle", {
 		growtime = 270, -- 4.5 min -> in average 5.4 min
 		growing_type = "schematic_and_function",
 		mgv6_grow = function(pos)
+			if not default.can_grow() then
+				return false
+			end
+			
 			default.grow_jungle_tree(pos)
 		end
 	},

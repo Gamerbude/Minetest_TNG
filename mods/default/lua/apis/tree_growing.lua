@@ -116,6 +116,8 @@ function default.grow_apple_tree(pos, is_apple_tree, bad)
 	vm:set_data(data)
 	vm:write_to_map()
 	vm:update_map()
+	
+	return true
 end
 
 
@@ -168,6 +170,8 @@ function default.grow_jungle_tree(pos, bad)
 	vm:set_data(data)
 	vm:write_to_map()
 	vm:update_map()
+	
+	return true
 end
 
 
@@ -310,4 +314,6 @@ function default.grow_pine_tree(pos)
 	vm:set_data(data)
 	vm:write_to_map()
 	vm:update_map()
+	
+	return true
 end
