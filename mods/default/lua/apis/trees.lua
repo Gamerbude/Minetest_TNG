@@ -63,7 +63,7 @@ end
 function default.register_sapling(name, def)
 	local growtime = def.growtime or 300
 	growtime = growtime * default.GROW_TIME_FACTOR
-	local on_grow = def.on_grow or default.grow_sapling
+	local on_grow = def.on_grow
 	
 	def.drawtype = "plantlike"
 	def.tiles = def.tiles or {def.texture}
@@ -133,6 +133,47 @@ function default.register_tree(name, def)
 	-- other values
 	def.leaves.sapling_name = def.sapling.name	or name .. "_sapling"
 
+	-- sapling growing functions
+	if def.sapling.growing_type == "schematic" then
+		default.grow_tree[name] = function(pos)
+			if not default.can_grow(pos) then
+				return false
+			end
+			
+			core.log("action", "A \"" .. def.sapling.description .. "\" grows into a tree at " .. core.pos_to_string(pos))
+			
+			local path = def.schematic
+			core.place_schematic({x = pos.x - def.schematic_size.x, y = pos.y - def.schematic_size.y, z = pos.z - def.schematic_size.z}, path, math.random, def.schematic_replace or nil, false)
+			return true
+		end
+		-- set the sapling growing function
+		def.sapling.on_grow = default.grow_tree[name]
+	elseif def.sapling.growing_type == "schematic_and_function" then
+		default.grow_mgv6_tree[name] = def.sapling.mgv6_grow
+		
+		default.grow_tree = nil
+		default.grow_tree = {}
+		
+		default.grow_tree[name] = function(pos)
+			if not default.can_grow(pos) then
+				return false
+			end
+			
+			core.log("action", "A \"" .. def.sapling.description .. "\" grows into a tree at " .. core.pos_to_string(pos))
+			
+			if core.get_mapgen_params().mgname == "v6" then
+				-- grow tree with function
+				default.grow_mgv6_tree[name](pos)
+			else
+				-- place schematic
+				local path = def.schematic
+				core.place_schematic({x = pos.x - def.schematic_size.x, y = pos.y - def.schematic_size.y, z = pos.z - def.schematic_size.z}, path, math.random, def.schematic_replace or nil, false)
+			end
+			return true
+		end
+		-- set the sapling growing function
+		def.sapling.on_grow = default.grow_tree[name]
+	end
 
 	-- log / tree
 	if def.register.log then

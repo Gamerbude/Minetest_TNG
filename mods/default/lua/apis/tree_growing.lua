@@ -1,4 +1,4 @@
--- mods/default/lua/trees.lua
+-- mods/default/lua/apis/tree_growing.lua
 
 local random = math.random
 
@@ -21,53 +21,9 @@ function default.can_grow(pos)
 	return true
 end
 
-function default.grow_sapling(pos)
-	local node = core.get_node(pos)
-	
-	if not default.can_grow(pos) then
-		return false
-	end
-
-	local mapgen = core.get_mapgen_params().mgname
-	if node.name == "default:sapling" then
-		core.log("action", "A sapling grows into a tree at "..
-			core.pos_to_string(pos))
-		if mapgen == "v6" then
-			default.grow_tree(pos, random(1, 4) == 1)
-		else
-			default.grow_new_apple_tree(pos)
-		end
-		return true
-	elseif node.name == "default:junglesapling" then
-		core.log("action", "A jungle sapling grows into a tree at "..
-			core.pos_to_string(pos))
-		if mapgen == "v6" then
-			default.grow_jungle_tree(pos)
-		else
-			default.grow_new_jungle_tree(pos)
-		end
-		return true
-	elseif node.name == "default:pine_sapling" then
-		core.log("action", "A pine sapling grows into a tree at "..
-			core.pos_to_string(pos))
-		if mapgen == "v6" then
-			default.grow_pine_tree(pos)
-		else
-			default.grow_new_pine_tree(pos)
-		end
-		return true
-	elseif node.name == "default:acacia_sapling" then
-		core.log("action", "An acacia sapling grows into a tree at "..
-			core.pos_to_string(pos))
-		default.grow_new_acacia_tree(pos)
-	elseif node.name == "default:birch_sapling" then
-		core.log("action", "An birch sapling grows into a tree at "..
-			core.pos_to_string(pos))
-		default.grow_new_birch_tree(pos)
-		return true
-	end
-end
-
+-- for global tree growing functions (will be filled with default.register_tree)
+default.grow_mgv6_tree = {}
+default.grow_tree = {}
 
 --
 -- Tree generation
@@ -135,15 +91,12 @@ end
 
 -- Apple tree
 
-function default.grow_tree(pos, is_apple_tree, bad)
+function default.grow_apple_tree(pos, is_apple_tree, bad)
 	--[[
 		NOTE: Tree-placing code is currently duplicated in the engine
 		and in games that have saplings; both are deprecated but not
 		replaced yet
 	--]]
-	if bad then
-		error("Deprecated use of default.grow_tree")
-	end
 
 	local x, y, z = pos.x, pos.y, pos.z
 	local height = random(4, 5)
@@ -358,47 +311,3 @@ function default.grow_pine_tree(pos)
 	vm:write_to_map()
 	vm:update_map()
 end
-
-
--- New apple tree
-
-function default.grow_new_apple_tree(pos)
-	local path = core.get_modpath("default") .. "/schematics/apple_tree_from_sapling.mts"
-	core.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
-		path, 0, nil, false)
-end
-
-
--- New jungle tree
-
-function default.grow_new_jungle_tree(pos)
-	local path = core.get_modpath("default") .. "/schematics/jungle_tree_from_sapling.mts"
-	core.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
-		path, 0, nil, false)
-end
-
-
--- New pine tree
-
-function default.grow_new_pine_tree(pos)
-	local path = core.get_modpath("default") .. "/schematics/pine_tree_from_sapling.mts"
-	core.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
-		path, 0, nil, false)
-end
-
-
--- New acacia tree
-
-function default.grow_new_acacia_tree(pos)
-	local path = core.get_modpath("default") .. "/schematics/acacia_tree_from_sapling.mts"
-	core.place_schematic({x = pos.x - 4, y = pos.y - 1, z = pos.z - 4},
-		path, random, nil, false)
-end
-
- -- New birch tree
-
- function default.grow_new_birch_tree(pos)
-	 local path = core.get_modpath("default") .. "/schematics/birch_tree_from_sapling.mts"
-	 core.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
-	 	path, 0, nil, false)
- end
