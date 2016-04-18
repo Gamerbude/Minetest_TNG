@@ -151,9 +151,6 @@ function default.register_tree(name, def)
 	elseif def.sapling.growing_type == "schematic_and_function" then
 		default.grow_mgv6_tree[name] = def.sapling.mgv6_grow
 		
-		default.grow_tree = nil
-		default.grow_tree = {}
-		
 		default.grow_tree[name] = function(pos)
 			if not default.can_grow(pos) then
 				return false
