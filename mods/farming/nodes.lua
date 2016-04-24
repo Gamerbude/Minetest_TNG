@@ -42,6 +42,13 @@ default.register_node("farming:soil_wet", {
 	}
 })
 
+default.register_node("farming:garden_soil", {
+	description = "Garden Soil",
+	tiles = {"farming_garden_soil.png"},
+	groups = {crumbly = 2, soil = 3, wet = 1, grassland = 1},
+	sounds = default.node_sound_dirt_defaults(),
+})
+
 minetest.override_item("default:desert_sand", {
 	groups = {crumbly = 3, falling_node = 1, sand = 1, soil = 1},
 	soil = {
@@ -93,12 +100,13 @@ minetest.register_abm({
 	chance = 4,
 	action = function(pos, node)
 		local n_def = minetest.registered_nodes[node.name] or nil
-		local wet = n_def.soil.wet or nil
-		local base = n_def.soil.base or nil
-		local dry = n_def.soil.dry or nil
-		if not n_def or not n_def.soil or not wet or not base or not dry then
+		if not n_def or not n_def.soil or not n_def.soil.wet or not n_def.soil.base or not n_def.soil.dry then
 			return
 		end
+
+		local wet = n_def.soil.wet
+		local base = n_def.soil.base
+		local dry = n_def.soil.dry
 
 		pos.y = pos.y + 1
 		local nn = minetest.get_node_or_nil(pos)
@@ -129,7 +137,7 @@ minetest.register_abm({
 					if minetest.get_item_group(nn.name, "plant") == 0 and minetest.get_item_group(nn.name, "seed") == 0 then
 						minetest.set_node(pos, {name = base})
 					end
-					
+
 				-- if its wet turn it back into dry soil
 				elseif wet_lvl == 1 then
 					minetest.set_node(pos, {name = dry})

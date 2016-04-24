@@ -1,5 +1,5 @@
-MThis mod is part of Minetest TNG
-=================================
+This mod is part of Minetest TNG
+================================
 
 License of source code:
 -----------------------
@@ -28,8 +28,9 @@ PilzAdam (WTFPL):
   farming_soil_wet.png
   farming_soil_wet_side.png
   farming_string.png
+  farming_potato_*.png
 
-BlockMen (CC BY-SA 3.0):
+BlockMen <blockmen2015@gmail.com> (CC BY-SA 3.0):
   farming_tool_diamondhoe.png
   farming_tool_mesehoe.png
   farming_tool_bronzehoe.png
@@ -47,6 +48,8 @@ Gambit (WTFPL):
   farming_cotton_seed.png
   farming_wheat_seed.png
 
-LNJ (CC BY-SA 3.0):
+LNJ <lnj.git@gmail.com> (CC BY-SA 3.0):
   farming_potato.png
-  farming_potato_*.png
+
+cd2 <cdqwertz@gmail.com> (CC BY-SA 3.0):
+  farming_garden_soil.png
