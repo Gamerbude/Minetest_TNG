@@ -28,6 +28,17 @@ default.gui_suvival_form = default.gui_survival_form
 -- Old stairs and slabs API
 stairs = {}
 
+-- tree growing
+default.grow_new_apple_tree = default.grow_tree["default:apple"]
+default.grow_new_jungle_tree = default.grow_tree["default:jungle"]
+default.grow_new_pine_tree = default.grow_tree["default:pine"]
+default.grow_new_acacia_tree = default.grow_tree["default:acacia"]
+default.grow_new_birch_tree = default.grow_tree["default:birch"]
+
+-- MTG compatibility
+default.grow_new_aspen_tree = default.grow_tree["default:birch"]
+
+
 -- stairs
 function stairs.register_stair(subname, recipeitem, groups, images, description, sounds)
 	default.register_stair(":stairs:stair_" .. subname, {
