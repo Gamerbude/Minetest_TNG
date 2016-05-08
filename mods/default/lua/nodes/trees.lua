@@ -16,7 +16,7 @@ default.register_tree("default:apple", {
 		name = "default:sapling",
 		description = "Sapling",
 		texture = "default_sapling.png",
-		growtime = 1, --300,
+		growtime = 300,
 		growing_type = "schematic_and_function",
 		schematic = default.get_schematic_path("default", "apple_tree_from_sapling.mts"),
 		schematic_size = {x = 2, y = 1, z = 2},
