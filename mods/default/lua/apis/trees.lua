@@ -159,32 +159,41 @@ function default.register_tree(name, def)
 			-- place the schematic
 			local path = def.sapling.schematic
 			core.place_schematic({x = pos.x - def.sapling.schematic_size.x, y = pos.y - def.sapling.schematic_size.y, z = pos.z - def.sapling.schematic_size.z}, path, "random", def.sapling.schematic_replace or nil, false)
+			
 			return true
 		end
+		
 		-- set the sapling growing function
 		def.sapling.on_grow = default.grow_tree[name]
+	
 	elseif def.sapling.growing_type == "schematic_and_function" then
-		default.grow_mgv6_tree[name] = def.sapling.mgv6_grow
+		default.grow_mgv6_tree[name] = def.sapling.mgv6_grow -- this function is only global because you maybe want to grow an old tree in a different mapgen than v6
 		
-		default.grow_tree[name] = function(pos)
+		
+		default.grow_tree[name] = function(pos) -- use this function if you ever want to have the right tree for the right mapgen
 			if not default.can_grow(pos) then
 				return false
 			end
+			
+			local succes = true
 			
 			core.log("action", "A \"" .. def.sapling.description .. "\" grows into a tree at " .. core.pos_to_string(pos))
 			
 			if core.get_mapgen_params().mgname == "v6" then
 				-- grow tree with function
-				default.grow_mgv6_tree[name](pos)
+				succes = default.grow_mgv6_tree[name](pos)
 			else
 				-- remove the sapling
 				core.remove_node(pos)
+				
 				-- place schematic
 				local path = def.sapling.schematic
 				core.place_schematic({x = pos.x - def.sapling.schematic_size.x, y = pos.y - def.sapling.schematic_size.y, z = pos.z - def.sapling.schematic_size.z}, path, "random", def.sapling.schematic_replace or nil, false)
 			end
-			return true
+			
+			return succes
 		end
+		
 		-- set the sapling growing function
 		def.sapling.on_grow = default.grow_tree[name]
 	end
@@ -193,24 +202,29 @@ function default.register_tree(name, def)
 	if def.register.log == true then
 		default.register_log(def.log.name or name .. "_tree", def.log)
 	end
+	
 	-- leaves
 	if def.register.leaves == true then
 		default.register_leaves(def.leaves.name or name .. "_leaves", def.leaves)
 	end
+	
 	-- sapling
 	if def.register.sapling == true then
 		default.register_sapling(def.sapling.name or name .. "_sapling", def.sapling)
 	end
+	
 	-- planks / wood
 	if def.register.planks == true then
 		default.register_planks(def.planks.name or name .. "_wood", def.planks)
 	end
+	
 	-- map generation
 	if def.register.mapgen == true and core.get_mapgen_params().mgname ~= "v6" then -- dont register in mgv6
 		default.register_tree_generation(def.mapgen)
 	end
 	
-	if not def.no_craft then
+	
+	if def.no_craft ~= true then
 		core.register_craft({
 			output = (def.planks.name or name .. "_wood") .. " 4",
 			recipe = {

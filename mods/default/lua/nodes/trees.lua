@@ -1,6 +1,6 @@
-default.register_tree("default:apple", { -- can be used for default.grow_tree["<tree name>"](pos)
+default.register_tree("default:apple", { 
+	-- name can be used for default.grow_tree["<tree name>"](pos)
 	register = {leaves = true, sapling = true, log = true, planks = true, mapgen = true},
-	-- not the real size of the schematic, its about how much the schematic has to move from the pos of the sapling
 	log = {
 		name = "default:tree",
 		description = "Log",
@@ -16,13 +16,17 @@ default.register_tree("default:apple", { -- can be used for default.grow_tree["<
 		name = "default:sapling",
 		description = "Sapling",
 		texture = "default_sapling.png",
-		growtime = 300,
+		growtime = 1, --300,
 		growing_type = "schematic_and_function",
-		mgv6_grow = function(pos)
-			return default.grow_apple_tree(pos, math.random(1, 4) == 1) -- see mods/default/lua/apis/tree_growing.lua
-		end,
 		schematic = default.get_schematic_path("default", "apple_tree_from_sapling.mts"),
 		schematic_size = {x = 2, y = 1, z = 2},
+		mgv6_grow = function(pos)
+			if not default.can_grow(pos) then
+				return false
+			end
+			
+			return default.grow_apple_tree(pos, math.random(1, 4) == 1) --  see mods/default/lua/apis/tree_growing.lua
+		end
 	},
 	planks = {
 		name = "default:wood",
@@ -64,11 +68,11 @@ default.register_tree("default:jungle", {
 		growtime = 270, -- 4.5 min -> in average 5.4 min
 		growing_type = "schematic_and_function",
 		mgv6_grow = function(pos)
-			if not default.can_grow() then
+			if not default.can_grow(pos) then
 				return false
 			end
 			
-			default.grow_jungle_tree(pos)
+			return default.grow_jungle_tree(pos)
 		end,
 		schematic = default.get_schematic_path("default", "jungle_tree_from_sapling.mts"),
 		schematic_size = {x = 2, y = 1, z = 2},
@@ -124,6 +128,8 @@ default.register_tree("default:acacia", {
 	description = "Acacia",
 	register = {leaves = true, sapling = true, log = true, planks = true, mapgen = true},
 	texture_prefix = "default_acacia",
+	schematic = core.get_modpath("default") .. "/schematics/acacia_tree_from_sapling.mts",
+	schematic_size = {x = 4, y = 1, z = 4},
 	sapling = {
 		growtime = 420, -- 7 min -> in average 8.4 min
 		growing_type = "schematic",

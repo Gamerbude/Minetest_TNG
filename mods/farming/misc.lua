@@ -25,3 +25,13 @@ core.register_craft({
 		{"farming:straw"},
 	}
 })
+
+-- Garden Soil
+core.register_craft({
+	type = "shapeless",
+	output = "farming:garden_soil",
+	recipe = {"group:dirt", "bucket:bucket_water"},
+	replacements = {
+		{"bucket:bucket_water", "bucket:bucket_empty"}
+	},
+})

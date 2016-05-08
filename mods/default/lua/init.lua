@@ -144,6 +144,7 @@ dofile(luapath .. "crafting.lua")
 --
 
 dofile(luapath .. "chat_cmds.lua")
+dofile(luapath .. "death_msgs.lua")
 dofile(luapath .. "item_pickup.lua")
 dofile(luapath .. "item_physics.lua")
 dofile(luapath .. "sethome.lua")
