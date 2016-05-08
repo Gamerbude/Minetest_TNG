@@ -175,13 +175,13 @@ function default.register_tree(name, def)
 				return false
 			end
 			
-			local succes = true
+			local success = true
 			
 			core.log("action", "A \"" .. def.sapling.description .. "\" grows into a tree at " .. core.pos_to_string(pos))
 			
 			if core.get_mapgen_params().mgname == "v6" then
 				-- grow tree with function
-				succes = default.grow_mgv6_tree[name](pos)
+				success = default.grow_mgv6_tree[name](pos)
 			else
 				-- remove the sapling
 				core.remove_node(pos)
@@ -191,7 +191,7 @@ function default.register_tree(name, def)
 				core.place_schematic({x = pos.x - def.sapling.schematic_size.x, y = pos.y - def.sapling.schematic_size.y, z = pos.z - def.sapling.schematic_size.z}, path, "random", def.sapling.schematic_replace or nil, false)
 			end
 			
-			return succes
+			return success
 		end
 		
 		-- set the sapling growing function
