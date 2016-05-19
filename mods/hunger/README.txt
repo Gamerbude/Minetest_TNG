@@ -1,52 +1,62 @@
 This mod is part of Minetest TNG
 ================================
-Hunger, Version: 1.1.3 (modified)
 
 License of source code:
 -----------------------
 Copyright (C) 2015 BlockMen <blockmen2015@gmail.com>
+Copyright (C) 2016 Auke Kok <sofar@foo-projects.org>
 Copyright (C) 2016 LNJ <lnj.git@gmail.com>
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU Lesser General Public License as published by
-the Free Software Foundation; either version 2.1 of the License, or
-(at your option) any later version.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Lesser General Public License for more details.
+GNU General Public License for more details.
 
-You should have received a copy of the GNU Lesser General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 License of media (textures, sounds, meshes):
 --------------------------------------------
 (by Authors)
 
-BlockMen (CC BY-SA 3.0):
-  hunger_statbar_poisen.png
-  hunger_eat.ogg
+BlockMen <blockmen2015@gmail.com> (CC BY-SA 3.0):
+  hunger_hud_poison.png
+
+PilzAdam (WTFPL):
+  hunger_hud_fg.png, modified by BlockMen
+  hunger_hud_bg.png, modified by BlockMen
+
+sonictechtonic (CC BY 3.0):
+  hunger_eat.*.ogg, See: http://www.freesound.org/people/sonictechtonic/sounds/242215/
 
 
 About this mod:
-~~~~~~~~~~~~~~~
-This mod adds hunger mechanics to Minetest, which are based on player actions and on time.
-Also it changes the eating in Minetest, e.g. an Apple does not restore Health, but it rises your saturation.
-Example: 1 apple fills up the hunger bar by 1 "bread" (statbar symbol).
-Although the statbar show 20 hunger points (10 breads) on the HUD you can fill it up to 30 points.
+---------------
+This mod adds a hunger mechanic to Minetest. Actions like
+crafting, walking, digging or fighting make the player exhausted. When
+enough exhaustion has been accumulated, the player gets more hungry.
 
-By default it supports a lot of food already (see full list below) and food that for registered via the API.
-For more information how to register more food see API.txt
+If a player is low on hunger, they start taking periodical damage,
+and ultimately will die if they do not eat food.
 
-Information:
-This mod depends on the "Better HUD" mod (https://github.com/BlockMen/hud) to provide information about your current saturation.
+Eating food no longer heals the player. Instead, it increases the
+saturation of the player. The hunger bar shows how well fed the player
+is. More bread pieces means more saturation.
 
 
 For Modders:
-~~~~~~~~~~~~
-This mod alters the behavior of minetest.item_eat().
-All callbacks that are registered via minetest.register_on_item_eat() are called AFTER this mod actions, so the itemstack
-will have changed already when callbacks are called. You can get the original itemstack as 6th parameter of your function then.
+------------
+This mod intercepts minetest.item_eat(), and applies the hp_change
+as hunger change. The value can be positive (increase saturation) or
+negative (periodically damage the player by 1 hp).
+
+Callbacks that are registered via minetest.register_on_item_eat()
+are called after this mod, so the itemstack will have changed already
+when callbacks are called. You can get the original itemstack as 6th
+parameter of your function then.
