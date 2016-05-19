@@ -1,46 +1,50 @@
--- Wheat
-farming.register_plant({
-	plantname = "wheat",
-	seed = {
-		description = "Wheat Seed",
-		inventory_image = "farming_wheat_seed.png",
-	},
-	harvest = {
-		description = "Wheat",
-		inventory_image = "farming_wheat.png",
-	},
+farming.register_crop("wheat", {
+	description = "Wheat",
 	steps = 8,
-	minlight = 13,
-	maxlight = default.LIGHT_MAX,
-	fertility = {"grassland"}
+	growtime = 500,
+	has_seed = true,
+	craft_seed_by_harvest = true,
+	cond = {
+		fertility = {"grassland"},
+		light = {min = 13, max = default.LIGHT_MAX},
+	},
 })
 
--- Cotton
-farming.register_plant({
-	plantname = "cotton",
-	seed = {
-		description = "Cotton Seeds",
-		inventory_image = "farming_cotton_seed.png",
-	},
-	harvest = {
-		description = "Cotton",
-		inventory_image = "farming_cotton.png",
-	},
+farming.register_crop("cotton", {
+	description = "Cotton",
 	steps = 8,
-	minlight = 13,
-	maxlight = default.LIGHT_MAX,
-	fertility = {"grassland", "desert"}
+	growtime = 520,
+	has_seed = true,
+	cond = {
+		fertility = {"grassland", "desert"},
+		light = {min = 13, max = default.LIGHT_MAX},
+	},
 })
 
--- Potato
-farming.register_plant({
-	plantname = "potato",
+farming.register_crop("potato", {
 	description = "Potato",
-	inventory_image = "farming_potato.png",
 	steps = 3,
+	growtime = 450,
 	has_seed = false,
-	minlight = 13,
-	maxlight = default.LIGHT_MAX,
-	fertility = {"grassland"},
-	on_use = minetest.item_eat(1)
+	cond = {
+		fertility = {"grassland"},
+		light = {min = 13, max = default.LIGHT_MAX},
+	},
+	harvest = {
+		on_use = core.item_eat(1),
+	},
+})
+
+farming.register_crop("strawberry", {
+	description = "Strawberry",
+	steps = 7,
+	growtime = 480,
+	has_seed = false,
+	cond = {
+		fertility = {"grassland"},
+		light = {min = 13, max = default.LIGHT_MAX},
+	},
+	harvest = {
+		on_use = core.item_eat(1),
+	},
 })

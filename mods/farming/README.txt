@@ -1,14 +1,16 @@
 This mod is part of Minetest TNG
 ================================
+Farming++
 
 License of source code:
 -----------------------
+Copyright (C) 2016 LNJ <lnj.git@gmail.com>
 Copyright (C) 2014 webdesigner97
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
-at your option) any later version.
+(at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -53,3 +55,8 @@ LNJ <lnj.git@gmail.com> (CC BY-SA 3.0):
 
 cd2 <cdqwertz@gmail.com> (CC BY-SA 3.0):
   farming_garden_soil.png
+
+fridolin (CC BY-SA 3.0):
+  farming_strawberry_*.png
+  farming_strawberry.png
+  farming_strawberry_seed.png

@@ -1,4 +1,4 @@
-minetest.override_item("default:dirt", {
+core.override_item("default:dirt", {
 	groups = {crumbly = 3, soil = 1},
 	soil = {
 		base = "default:dirt",
@@ -7,7 +7,7 @@ minetest.override_item("default:dirt", {
 	}
 })
 
-minetest.override_item("default:dirt_with_grass", {
+core.override_item("default:dirt_with_grass", {
 	groups = {crumbly = 3, soil = 1},
 	soil = {
 		base = "default:dirt_with_grass",
@@ -49,7 +49,7 @@ default.register_node("farming:garden_soil", {
 	sounds = default.node_sound_dirt_defaults(),
 })
 
-minetest.override_item("default:desert_sand", {
+core.override_item("default:desert_sand", {
 	groups = {crumbly = 3, falling_node = 1, sand = 1, soil = 1},
 	soil = {
 		base = "default:desert_sand",
@@ -83,23 +83,12 @@ default.register_node("farming:desert_sand_soil_wet", {
 	}
 })
 
-default.register_node("farming:straw", {
-	register = {stair = true, slab = true},
-	description = "Straw",
-	tiles = {"farming_straw.png"},
-	is_ground_content = false,
-	groups = {snappy = 3, flammable = 4},
-	sounds = default.node_sound_leaves_defaults(),
-	stair = {legacy_alias = "stairs:stair_straw"},
-	slab = {legacy_alias = "stairs:slab_straw"},
-})
-
-minetest.register_abm({
+core.register_abm({
 	nodenames = {"group:field"},
 	interval = 15,
 	chance = 4,
 	action = function(pos, node)
-		local n_def = minetest.registered_nodes[node.name] or nil
+		local n_def = core.registered_nodes[node.name] or nil
 		if not n_def or not n_def.soil or not n_def.soil.wet or not n_def.soil.base or not n_def.soil.dry then
 			return
 		end
@@ -109,61 +98,40 @@ minetest.register_abm({
 		local dry = n_def.soil.dry
 
 		pos.y = pos.y + 1
-		local nn = minetest.get_node_or_nil(pos)
+		local nn = core.get_node_or_nil(pos)
 		if not nn or not nn.name then
 			return
 		end
-		local nn_def = minetest.registered_nodes[nn.name] or nil
+		local nn_def = core.registered_nodes[nn.name] or nil
 		pos.y = pos.y - 1
 		
-		if nn_def and nn_def.walkable and minetest.get_item_group(nn.name, "plant") == 0 then
-			minetest.set_node(pos, {name = base})
+		if nn_def and nn_def.walkable and core.get_item_group(nn.name, "plant") == 0 then
+			core.set_node(pos, {name = base})
 			return
 		end
 		-- check if there is water nearby
-		local wet_lvl = minetest.get_item_group(node.name, "wet")
-		if minetest.find_node_near(pos, 3, {"group:water"}) then
+		local wet_lvl = core.get_item_group(node.name, "wet")
+		if core.find_node_near(pos, 3, {"group:water"}) then
 			-- if it is dry soil and not base node, turn it into wet soil
 			if wet_lvl == 0 then
-				minetest.set_node(pos, {name = wet})
+				core.set_node(pos, {name = wet})
 			end
 		else
 			-- only turn back if there are no unloaded blocks (and therefore
 			-- possible water sources) nearby
-			if not minetest.find_node_near(pos, 3, {"ignore"}) then
+			if not core.find_node_near(pos, 3, {"ignore"}) then
 				-- turn it back into base if it is already dry
 				if wet_lvl == 0 then
 					-- only turn it back if there is no plant/seed on top of it
-					if minetest.get_item_group(nn.name, "plant") == 0 and minetest.get_item_group(nn.name, "seed") == 0 then
-						minetest.set_node(pos, {name = base})
+					if core.get_item_group(nn.name, "plant") == 0 and core.get_item_group(nn.name, "seed") == 0 then
+						core.set_node(pos, {name = base})
 					end
 
 				-- if its wet turn it back into dry soil
 				elseif wet_lvl == 1 then
-					minetest.set_node(pos, {name = dry})
+					core.set_node(pos, {name = dry})
 				end
 			end
 		end
 	end,
-})
-
-
-for i = 1, 5 do		
-	minetest.override_item("default:grass_"..i, {drop = {
-		max_items = 1,
-		items = {
-			{items = {'farming:seed_wheat'}, rarity = 5},
-			{items = {'default:grass_1'}},
-		}
-	}})
-end
-
-minetest.override_item("default:junglegrass", {
-	drop = {
-		max_items = 1,
-		items = {
-			{items = {'farming:seed_cotton'}, rarity = 8},
-			{items = {'default:junglegrass'}},
-		}
-	}
 })
