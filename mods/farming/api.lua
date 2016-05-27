@@ -2,7 +2,63 @@ local function throw_error(message)
 	core.log("error", "[Game] Farming: " .. message)
 end
 
-local function can_grow(pos, cond)
+-- Seed placement
+farming.place_seed = function(itemstack, placer, pointed_thing, plantname)
+	local pt = pointed_thing
+	-- check if pointing at a node
+	if not pt then
+		return
+	end
+	if pt.type ~= "node" then
+		return
+	end
+
+	local under = core.get_node(pt.under)
+	local above = core.get_node(pt.above)
+
+	if core.is_protected(pt.under, placer:get_player_name()) then
+		core.record_protection_violation(pt.under, placer:get_player_name())
+		return
+	end
+	if core.is_protected(pt.above, placer:get_player_name()) then
+		core.record_protection_violation(pt.above, placer:get_player_name())
+		return
+	end
+
+
+	-- return if any of the nodes is not registered
+	if not core.registered_nodes[under.name] then
+		return
+	end
+	if not core.registered_nodes[above.name] then
+		return
+	end
+
+	-- check if pointing at the top of the node
+	if pt.above.y ~= pt.under.y + 1 then
+		return
+	end
+
+	-- check if you can replace the node above the pointed node
+	if not core.registered_nodes[above.name].buildable_to then
+		return
+	end
+
+	-- check if pointing at soil
+	if core.get_item_group(under.name, "soil") < 2 then
+		return
+	end
+
+	-- add the node and remove 1 item from the itemstack
+	core.set_node(pt.above, {name = plantname, param2 = 1})
+	
+	if not core.setting_getbool("creative_mode") then
+		itemstack:take_item()
+	end
+	return itemstack
+end
+
+function farming.can_grow_crop(pos, cond)
 	if not pos or not cond then return false end
 	
 	-- Soil
@@ -30,6 +86,7 @@ local function can_grow(pos, cond)
 		return false
 	end
 	
+	--[[
 	-- Check heat
 	local heat = core.get_heat(pos)
 	
@@ -43,6 +100,7 @@ local function can_grow(pos, cond)
 	if not humidity or humidity < cond.humidity.min or humidity > cond.humidity.max then
 		return false
 	end
+	--]]
 	
 	return true
 end
@@ -54,7 +112,7 @@ local function start_timer(pos, growtime)
 end
 
 local function next_step(pos, new_name, growtime, cond)
-	if can_grow(pos, cond) == false then
+	if farming.can_grow_crop(pos, cond) == false then
 		start_timer(pos, growtime / 3) -- retry; only a third of the normal growing time
 		return
 	end
@@ -71,7 +129,7 @@ function farming.register_crop(name, def)
 	
 	def.cond = def.cond or {}
 	def.cond.fertility = def.cond.fertility or {}
-	def.cond.light = def.cond.light or {min = 8, max = default.LIGHT_MAX}
+	def.cond.light = def.cond.light or {min = 13, max = default.LIGHT_MAX}
 	def.cond.heat = def.cond.heat or {min = 30, max = 80}
 	def.cond.humidity = def.cond.humidity or {min = 22, max = 100}
 	
@@ -126,6 +184,32 @@ function farming.register_crop(name, def)
 			end
 		end
 		
+		
+		-- drop
+		if def.has_seed then
+			local seedname_ = def.seed.name or "farming:" .. name .. "_seed"
+		else
+			local seedname_ = def.harvest.name or "farming:" .. name
+		end
+		local harvestname_ = def.harvest.name or "farming:" .. name
+		
+		
+		plantdef[i].drop = {items = {}}
+		
+		-- ever drop a seed
+		table.insert(plantdef[i].drop.items, {items = {seedname_}, rarity = 1})
+		
+		-- if fully grown
+		if def.steps == i then
+			-- random another seed
+			table.insert(plantdef[i].drop.items, {items = {seedname_}, rarity = 2})
+			
+			-- harvest
+			table.insert(plantdef[i].drop.items, {items = {harvestname_}, rarity = 1})
+			table.insert(plantdef[i].drop.items, {items = {harvestname_}, rarity = 2})
+		end
+		
+		
 		core.register_node(":farming:" .. name .. "_" .. i, plantdef[i])
 	end
 	
@@ -149,11 +233,15 @@ function farming.register_crop(name, def)
 		seeddef.description = seeddef.description or def.description .. " Seed"
 		seeddef.inventory_image = seeddef.inventory_image or def.texture_prefix .. "_seed.png"
 		
+		seeddef.on_place = function(itemstack, placer, pointed_thing)
+			return farming.place_seed(itemstack, placer, pointed_thing, "farming:" .. name .. "_1")
+		end
+		
 		core.register_craftitem(seedname, seeddef)
 	end
 	
 	--
-	-- Harvest
+	-- (The) Harvest
 	--
 	
 	local harvestdef = def.harvest
@@ -166,16 +254,3 @@ function farming.register_crop(name, def)
 	
 	core.register_craftitem(harvestname, harvestdef)
 end
-
-farming.register_crop("wheat", {
-	description = "Wheat",
-	steps = 8,
-	texture_prefix = "farming_wheat",
-	growtime = 50,
-	cond = {
-		fertility = {"grassland"},
-		light = {min = 13, max = default.LIGHT_MAX},
-		heat = {min = 40, max = 90},
-		humidity = {min = 25, max = 90},
-	},
-})
