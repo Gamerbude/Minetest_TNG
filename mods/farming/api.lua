@@ -1,7 +1,3 @@
-local function throw_error(message)
-	core.log("error", "[Game] Farming: " .. message)
-end
-
 -- Seed placement
 farming.place_seed = function(itemstack, placer, pointed_thing, plantname)
 	local pt = pointed_thing
@@ -130,8 +126,10 @@ function farming.register_crop(name, def)
 	def.cond = def.cond or {}
 	def.cond.fertility = def.cond.fertility or {}
 	def.cond.light = def.cond.light or {min = 13, max = default.LIGHT_MAX}
-	def.cond.heat = def.cond.heat or {min = 30, max = 80}
-	def.cond.humidity = def.cond.humidity or {min = 22, max = 100}
+-- 	def.cond.heat = def.cond.heat or {min = 30, max = 80}
+-- 	def.cond.humidity = def.cond.humidity or {min = 22, max = 95}
+	
+	if def.has_seed ~= false then def.has_seed = true end
 	
 	-- +-----------------------------------------------------------------------------+
 	-- |                                Plant Steps                                  |
@@ -184,24 +182,26 @@ function farming.register_crop(name, def)
 			end
 		end
 		
+		--
+		-- Drop
+		--
 		
-		-- drop
-		if def.has_seed then
-			local seedname_ = def.seed.name or "farming:" .. name .. "_seed"
-		else
-			local seedname_ = def.harvest.name or "farming:" .. name
+		-- seed and harvest name
+		local seedname_ = def.seed.name or "farming:" .. name .. "_seed"
+		if def.has_seed == false then
+			seedname_ = def.harvest.name or "farming:" .. name
 		end
-		local harvestname_ = def.harvest.name or "farming:" .. name
 		
+		local harvestname_ = def.harvest.name or "farming:" .. name
 		
 		plantdef[i].drop = {items = {}}
 		
+		
 		-- ever drop a seed
 		table.insert(plantdef[i].drop.items, {items = {seedname_}, rarity = 1})
-		
 		-- if fully grown
 		if def.steps == i then
-			-- random another seed
+			-- random a second seed
 			table.insert(plantdef[i].drop.items, {items = {seedname_}, rarity = 2})
 			
 			-- harvest
@@ -222,8 +222,6 @@ function farming.register_crop(name, def)
 	-- Seed
 	--
 	
-	if def.has_seed ~= false then def.has_seed = true end
-	
 	if def.has_seed then
 		local seeddef = def.seed
 		local seedname = def.seed.name or ":farming:" .. name .. "_seed"
@@ -241,16 +239,35 @@ function farming.register_crop(name, def)
 	end
 	
 	--
-	-- (The) Harvest
+	-- Harvest
 	--
 	
 	local harvestdef = def.harvest
 	local harvestname = def.harvest.name or ":farming:" .. name
-	
+
 	harvestdef.name = nil
-	
+
 	harvestdef.inventory_image = harvestdef.inventory_image or def.texture_prefix .. ".png"
 	harvestdef.description = harvestdef.description or def.description
-	
+
+	if def.harvest_plantable == true then
+		harvestdef.on_place = function(itemstack, placer, pointed_thing)
+			return farming.place_seed(itemstack, placer, pointed_thing, "farming:" .. name .. "_1")
+		end
+	end
+
 	core.register_craftitem(harvestname, harvestdef)
+	
+	--
+	-- Crafting
+	--
+	
+	if def.craft_seed_by_harvest == true then
+		core.register_craft({
+			output = def.seed.name or "farming:" .. name .. "_seed",
+			recipe = {
+				{def.harvest.name or "farming:" .. name}
+			}
+		})
+	end
 end
