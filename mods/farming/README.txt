@@ -1,6 +1,6 @@
 This mod is part of Minetest TNG
 ================================
-Farming++, Status: testing
+Farming++
 
 License of source code:
 -----------------------
