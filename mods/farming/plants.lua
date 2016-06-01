@@ -1,7 +1,6 @@
 farming.register_crop("wheat", {
 	description = "Wheat",
 	steps = 8,
-	texture_prefix = "farming_wheat",
 	growtime = 500,
 	has_seed = true,
 	craft_seed_by_harvest = true,
@@ -14,7 +13,6 @@ farming.register_crop("wheat", {
 farming.register_crop("cotton", {
 	description = "Cotton",
 	steps = 8,
-	texture_prefix = "farming_cotton",
 	growtime = 520,
 	has_seed = true,
 	cond = {
@@ -26,7 +24,6 @@ farming.register_crop("cotton", {
 farming.register_crop("potato", {
 	description = "Potato",
 	steps = 3,
-	texture_prefix = "farming_potato",
 	growtime = 450,
 	has_seed = false,
 	cond = {

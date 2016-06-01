@@ -119,6 +119,8 @@ end
 function farming.register_crop(name, def)
 	if not def.steps or not def.growtime then return false end
 	
+	def.texture_prefix = def.texture_prefix or "farming_" .. name
+	
 	def.harvest = def.harvest or {}
 	def.seed = def.seed or {}
 	def.plant = def.plant or {}
@@ -250,7 +252,7 @@ function farming.register_crop(name, def)
 	harvestdef.inventory_image = harvestdef.inventory_image or def.texture_prefix .. ".png"
 	harvestdef.description = harvestdef.description or def.description
 
-	if def.harvest_plantable == true then
+	if def.harvest_plantable == true or def.has_seed == false then
 		harvestdef.on_place = function(itemstack, placer, pointed_thing)
 			return farming.place_seed(itemstack, placer, pointed_thing, "farming:" .. name .. "_1")
 		end
