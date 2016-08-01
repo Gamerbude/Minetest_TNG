@@ -28,6 +28,7 @@ Overview:
 	- Sign API, #Sign definition
 	- Player API, #Model definition
 	- Achievement API, #Achievement definition
+	- Flowers API, #Flower definition
 	- Raillike definitions
 	- Default sounds
 	- Default constants
@@ -548,6 +549,30 @@ awards.give_achievement(name, award)
 	},
 	secret = false
 	^ If true the player has to unlock it to find out what it is.
+}
+
+
+Flower API
+----------
+A simple API to make it easier to register a flower.
+
+default.register_flower(name, def)
+^ Registers a flower
+ -> name: The name of the node that will be registered
+ -> def: See [#Flower definition]
+
+Flower definition
+-----------------
+{
+	description = "Red Flower",
+	 ^ The description of node/flower
+	texture = "flowers_red.png",
+	 ^ The texture of the flower
+	   Will be used for inventory_image, wield_image and tiles
+	groups = {color_red = 1},
+	 ^ Groups of the flower. These will be added to them:
+	   {snappy  = 3, flammable = 2, flower = 1, flora = 1, attached_node = 1}
+	-- Here you can add other properties, see [Node definition]
 }
 
 

@@ -1,4 +1,6 @@
 -- mods/default/lua/mapgenv57.lua
+-- =============================
+-- See README.txt (in this mod) for licensing and other information.
 
 --
 -- Register biomes
@@ -664,6 +666,81 @@ register_grass_decoration(0.05, 0.08,  3, true)
 register_grass_decoration(0.07, -0.04, 2, true)
 register_grass_decoration(0.09, -0.06, 1, true)
 
+-- Flowers
+local function register_flower(seed, name)
+	core.register_decoration({
+		deco_type = "simple",
+		place_on = {"default:dirt_with_grass"},
+		sidelen = 16,
+		noise_params = {
+			offset = -0.02,
+			scale = 0.03,
+			spread = {x = 200, y = 200, z = 200},
+			seed = seed,
+			octaves = 3,
+			persist = 0.6
+		},
+		biomes = {"stone_grassland", "sandstone_grassland",
+			"deciduous_forest", "coniferous_forest"},
+		y_min = 1,
+		y_max = 31000,
+		decoration = "default:flower_" .. name,
+	})
+end
+
+register_flower(436,     "rose")
+register_flower(19822,   "tulip")
+register_flower(1220999, "dandelion_yellow")
+register_flower(36662,   "geranium")
+register_flower(1133,    "viola")
+register_flower(73133,   "dandelion_white")
+
+
+-- Mushrooms
+local function register_mushroom(name)
+	core.register_decoration({
+		deco_type = "simple",
+		place_on = {"default:dirt_with_grass"},
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.006,
+			spread = {x = 200, y = 200, z = 200},
+			seed = 2,
+			octaves = 3,
+			persist = 0.66
+		},
+		biomes = {"deciduous_forest", "coniferous_forest"},
+		y_min = 1,
+		y_max = 31000,
+		decoration = name,
+	})
+end
+
+register_mushroom("default:mushroom_brown")
+register_mushroom("default:mushroom_red")
+
+
+-- Waterlily
+core.register_decoration({
+	deco_type = "schematic",
+	place_on = {"default:dirt"},
+	sidelen = 16,
+	noise_params = {
+		offset = -0.12,
+		scale = 0.3,
+		spread = {x = 200, y = 200, z = 200},
+		seed = 33,
+		octaves = 3,
+		persist = 0.7
+	},
+	biomes = {"rainforest_swamp", "savanna_swamp", "deciduous_forest_swamp"},
+	y_min = 0,
+	y_max = 0,
+	schematic = default.get_schematic_path("default", "waterlily.mts"),
+	rotation = "random",
+})
+
 -- Junglegrass
 core.register_decoration({
 	deco_type = "simple",
@@ -694,7 +771,6 @@ core.register_decoration({
 	y_max = 31000,
 	decoration = "default:dry_shrub",
 })
-
 
 core.register_on_generated(default.generate_nyancats)
 core.register_on_generated(default.generate_ruins)

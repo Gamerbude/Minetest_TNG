@@ -1,4 +1,6 @@
 -- mods/default/lua/environment.lua
+-- ================================
+-- See README.txt (in this mod) for licensing and other information.
 
 --
 -- Lavacooling
@@ -237,6 +239,86 @@ core.register_abm({
 			-- Remove node
 			core.remove_node(p0)
 			nodeupdate(p0)
+		end
+	end
+})
+
+
+--
+-- Flower spread
+--
+
+core.register_abm({
+	nodenames = {"group:flora"},
+	neighbors = {"default:dirt_with_grass", "default:desert_sand"},
+	interval = 50,
+	chance = 42,
+	action = function(pos, node)
+		pos.y = pos.y - 1
+		local under = core.get_node(pos)
+		pos.y = pos.y + 1
+		if under.name == "default:desert_sand" then
+			core.set_node(pos, {name = "default:dry_shrub"})
+		elseif under.name ~= "default:dirt_with_grass" then
+			return
+		end
+
+		local light = core.get_node_light(pos)
+		if not light or light < 13 then
+			return
+		end
+
+		local pos0 = {x = pos.x - 4, y = pos.y - 4, z = pos.z - 4}
+		local pos1 = {x = pos.x + 4, y = pos.y + 4, z = pos.z + 4}
+		if #core.find_nodes_in_area(pos0, pos1, "group:flora_block") > 0 then
+			return
+		end
+
+		local flowers = core.find_nodes_in_area(pos0, pos1, "group:flora")
+		if #flowers > 3 then
+			return
+		end
+
+		local seedling = core.find_nodes_in_area(pos0, pos1, "default:dirt_with_grass")
+		if #seedling > 0 then
+			seedling = seedling[math.random(#seedling)]
+			seedling.y = seedling.y + 1
+			light = core.get_node_light(seedling)
+			if not light or light < 13 then
+				return
+			end
+			if core.get_node(seedling).name == "air" then
+				core.set_node(seedling, {name = node.name})
+			end
+		end
+	end
+})
+
+
+--
+-- Mushroom growing / spread
+--
+
+core.register_abm({
+	nodenames = {"group:mushroom"},
+	interval = 50,
+	chance = 45,
+	action = function(pos, node)
+		pos.y = pos.y - 1
+		local p = core.find_node_near(pos, 1, "air")
+		if not p or not default.is_day() then
+			return
+		end
+
+		local n1 = core.get_node_or_nil(p)
+		p.y = p.y - 1
+		local n2 = core.get_node_or_nil(p)
+
+		if node and n1 and n2 and core.get_item_group(n2.name, "soil") > 0 then
+			p.y = p.y + 1
+			if n1.name == "air" and core.get_node_light(p) <= 8 then
+				core.set_node(p, {name = node.name})
+			end
 		end
 	end
 })

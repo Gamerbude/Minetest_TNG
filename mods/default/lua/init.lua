@@ -1,11 +1,8 @@
--- This file is part of Minetest TNG
--- =================================
 -- mods/default/lua/init.lua
---
+-- =========================
 -- See README.txt for licensing and other information.
---
 
--- Filepaths
+-- File Paths
 local modpath = core.get_modpath("default")
 local luapath = modpath .. "/lua/"
 local nodepath = modpath .. "/lua/nodes/"
@@ -16,7 +13,7 @@ local apipath = modpath .. "/lua/apis/"
 local mg_name = core.get_mapgen_params().mgname or ""
 
 --
--- Global Functions
+-- Global Functions / Vars
 --
 
 dofile(luapath .. "gui.lua")
@@ -24,6 +21,7 @@ dofile(luapath .. "functions.lua")
 dofile(luapath .. "register.lua")
 dofile(luapath .. "environment.lua")
 dofile(luapath .. "sounds.lua")
+dofile(luapath .. "nodeboxes.lua")
 
 
 --
@@ -42,12 +40,13 @@ end
 
 
 --
--- APIs
+-- APIs / Registration helpers
 --
 
 dofile(apipath .. "carpets.lua")
 dofile(apipath .. "fences.lua")
 dofile(apipath .. "fencegates.lua")
+dofile(apipath .. "flowers.lua")
 dofile(apipath .. "player.lua")
 dofile(apipath .. "screwdriver.lua")
 dofile(apipath .. "signs.lua")
@@ -65,7 +64,8 @@ dofile(apipath .. "walls.lua")
 
 -- full/natural/mapgen
 dofile(nodepath .. "ores.lua")
-dofile(nodepath .. "trees.lua") -- registers logs, leaves, saplings, planks (stair, salb, fences, ...)
+dofile(nodepath .. "trees.lua")
+-- ^ registers logs, leaves, saplings, planks (stair, salb, fences, ...)
 
 dofile(nodepath .. "dirt.lua")
 dofile(nodepath .. "sand.lua")
@@ -76,41 +76,45 @@ dofile(nodepath .. "cobble.lua")
 dofile(nodepath .. "ice.lua")
 dofile(nodepath .. "snow.lua")
 
--- half-natural
+-- decoration
 dofile(nodepath .. "wool.lua") -- also registers carpets
 
 -- Plants
 dofile(nodepath .. "grass.lua")
-dofile(nodepath .. "papyrus.lua")
+dofile(nodepath .. "flowers.lua")
+dofile(nodepath .. "mushrooms.lua")
+dofile(nodepath .. "mushroom_blocks.lua")
+dofile(nodepath .. "waterlily.lua")
 
+dofile(nodepath .. "papyrus.lua")
 dofile(nodepath .. "cactus.lua")
 dofile(nodepath .. "vines.lua")
 
--- liquids
+-- Liquids
 dofile(nodepath .. "water.lua")
 dofile(nodepath .. "lava.lua")
 
--- crafted
+-- Crafted
 dofile(nodepath .. "glass.lua")
 dofile(nodepath .. "bricks.lua")
 
--- light
+-- Light
 dofile(nodepath .. "torch.lua")
 dofile(nodepath .. "lamps.lua")
 
--- blocks with an inventory
+-- Inventory blocks
 dofile(nodepath .. "chests.lua")
 dofile(nodepath .. "furnace.lua")
 dofile(nodepath .. "bookshelf.lua")
 dofile(nodepath .. "workbench.lua")
 
--- nodes with special functions
+-- Nodes with special uses
 dofile(nodepath .. "signs.lua")
 dofile(nodepath .. "latter.lua")
 dofile(nodepath .. "rails.lua")
 dofile(nodepath .. "itemframes.lua")
 
--- special
+-- Special
 dofile(nodepath .. "food.lua")
 dofile(nodepath .. "nyancat.lua")
 

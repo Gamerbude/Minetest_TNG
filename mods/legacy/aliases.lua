@@ -1,6 +1,6 @@
 -- mods/legacy/aliases.lua
 -- =======================
--- See README.txt for licensing anf other information.
+-- See README.txt for licensing and other information.
 
 --
 -- Minetest Version < 0.4 compatibility
@@ -125,4 +125,47 @@ core.register_alias("screwdriver:screwdriver4", "default:screwdriver")
 
 core.register_alias("wool:dark_blue", "default:wool_blue")
 core.register_alias("wool:gold", "default:wool_yellow")
+
+-- Wrong named fences
+core.register_alias("default:fence_pinewood", "default:fence_pine_wood")
+core.register_alias("default:fence_acaciawood", "default:fence_acacia_wood")
+core.register_alias("default:fence_birchwood", "default:fence_birch_wood")
+
+-- old dye mod
+core.register_alias("dye:white", "default:dye_white")
+core.register_alias("dye:grey", "default:dye_grey")
+core.register_alias("dye:dark_grey", "default:dye_dark_grey")
+core.register_alias("dye:black", "default:dye_black")
+core.register_alias("dye:red", "default:dye_red")
+core.register_alias("dye:orange", "default:dye_orange")
+core.register_alias("dye:yellow", "default:dye_yellow")
+core.register_alias("dye:green", "default:dye_green")
+core.register_alias("dye:cyan", "default:dye_cyan")
+core.register_alias("dye:blue", "default:dye_blue")
+core.register_alias("dye:violet", "default:dye_violet")
+core.register_alias("dye:magenta", "default:dye_magenta")
+
+-- Aliases for old flowers mod
+core.register_alias("flowers:flower_rose", "default:flower_rose")
+core.register_alias("flowers:flower_tulip", "default:flower_tulip")
+core.register_alias("flowers:flower_dandelion_yellow", "default:flower_dandelion_yellow")
+core.register_alias("flowers:flower_geranium", "default:flower_geranium")
+core.register_alias("flowers:flower_viola", "default:flower_viola")
+core.register_alias("flowers:flower_dandelion_white", "default:flower_dandelion_white")
+
+core.register_alias("flowers:rose", "default:flower_rose")
+core.register_alias("flowers:tulip", "default:flower_tulip")
+core.register_alias("flowers:dandelion_yellow", "default:flower_dandelion_yellow")
+core.register_alias("flowers:geranium", "default:flower_geranium")
+core.register_alias("flowers:viola", "default:flower_viola")
+core.register_alias("flowers:dandelion_white", "default:flower_dandelion_white")
+
+core.register_alias("flowers:mushroom_brown", "default:mushroom_brown")
+core.register_alias("flowers:mushroom_red", "default:mushroom_red")
+
+core.register_alias("flowers:waterlily", "default:waterlily")
+
+-- MTG compatibility
+core.register_alias("flowers:mushroom_fertile_brown", "default:mushroom_brown")
+core.register_alias("flowers:mushroom_fertile_red", "default:mushroom_red")
 
