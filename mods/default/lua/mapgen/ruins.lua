@@ -33,8 +33,11 @@ local chest_stuff = {
 
 local function can_replace(pos)
 	local n = core.get_node_or_nil(pos)
+	if not n then
+		return true
+	end
 	local ndef = core.registered_nodes[n.name] or nil
-	if (ndef and not ndef.walkable) or not n then
+	if ndef and not ndef.walkable then
 		return true
 	else
 		return false
