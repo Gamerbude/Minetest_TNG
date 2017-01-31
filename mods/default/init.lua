@@ -140,6 +140,9 @@ dofile(nodepath .. "lava.lua")
 -- Crafted
 dofile(nodepath .. "glass.lua")
 dofile(nodepath .. "bricks.lua")
+dofile(nodepath .. "walls.lua")
+
+
 
 -- Light
 dofile(nodepath .. "torch.lua")
