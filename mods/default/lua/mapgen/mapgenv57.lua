@@ -387,6 +387,24 @@ core.register_biome({
 	humidity_point = 25,
 })
 
+core.register_biome({
+	name = "bamboo_forest",
+	--node_dust = "",
+	node_top = "default:dirt_with_grass",
+	depth_top = 1,
+	node_filler = "default:dirt",
+	depth_filler = 5,
+	node_stone = "default:stone",
+	--node_water_top = "",
+	--depth_water_top = ,
+	--node_water = "",
+	--node_river_water = "",
+	y_min = 5,
+	y_max = 31000,
+	heat_point = 75,
+	humidity_point = 80,
+})
+
 -- Hot
 core.register_biome({
 	name = "desert",
@@ -561,7 +579,7 @@ local function register_grass_decoration(offset, scale, length, dry)
 	local biome = {"stone_grassland", "sandstone_grassland", "birch_forest_sandstone",
 			"deciduous_forest", "coniferous_forest", "coniferous_forest_dunes",
 			"maple_forest", "red_maple_forest", "mixed_maple_forest",
-			"cherry_tree_forest"}
+			"cherry_tree_forest", "bamboo_forest"}
 	local place_on = {"default:dirt_with_grass", "default:sand"}
 	if dry then
 		name = "default:dry_grass_"
@@ -647,7 +665,19 @@ core.register_decoration({
 	biomes = {"savanna_swamp"},
 	y_min = 0,
 	y_max = 0,
-	schematic = core.get_modpath("default").."/schematics/papyrus.mts",
+	schematic = default.get_schematic_path("default", "papyrus.mts"),
+})
+
+-- Bamboo
+core.register_decoration({
+	deco_type = "schematic",
+	place_on = {"default:dirt_with_grass"},
+	sidelen = 16,
+	fill_ratio = 0.15,
+	biomes = {"bamboo_forest"},
+	y_min = 0,
+	y_max = 31000,
+	schematic = default.get_schematic_path("default", "bamboo.mts"),
 })
 
 -- Grasses
